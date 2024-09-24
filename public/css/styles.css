@@ -7,12 +7,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #dbdbdb;
+    background-color: #e9e9e9;
     display: flex;
     justify-content: center;
     /* Menjaga konten tetap di tengah secara horizontal */
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
     /* Menjaga konten tetap di tengah secara vertikal */
 }
 
@@ -23,7 +23,28 @@ body {
     /* Mengatur margin otomatis agar konten terpusat */
 }
 
+.container-hero {
+    max-width: 1250px;
+    padding: 40px;
+    margin: 0 auto;
+    background-color: #e9e9e9;
 
+}
+
+.container-berita {
+    max-width: 1250px; /* Maximum width for content */
+    padding: 40px; /* Padding for content */
+    margin: 0 auto; /* Center the container */
+    background-color: #e9e9e9; /* Background color */
+    min-height: 100vh; /* Make the container at least 100% of the viewport height */
+    position: relative; /* Establish a positioning context */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+
+.container-tentang {
+    background-color: #ffffff;
+}
 
 header {
     display: flex;
@@ -33,7 +54,7 @@ header {
     /* Tambahkan padding vertikal */
     width: 100%;
     /* Memastikan header menggunakan lebar penuh */
-    background-color: #dbdbdb;
+    background-color: #e9e9e9;
     /* Opsional: tambahkan warna latar belakang untuk header */
 }
 
@@ -179,8 +200,7 @@ p {
 }
 
 .bg-image-container {
-    background-image: url('background');
-    /* Sesuaikan path jika perlu */
+    background-image: url('/asd.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -342,7 +362,7 @@ button:hover {
 }
 
 .berita-card-content a {
-    color: #ff6f61;
+    color: #f6ff00;
     text-decoration: none;
     font-weight: bold;
 }
@@ -419,142 +439,53 @@ button:hover {
     background-color: #444;
 }
 
-.footer {
-    background-color: black;
-    color: #fff;
-    padding: 40px 20px;
-    width: 100%;
+/* Footer styles */
+footer {
+    background-color: #000000;
+    color: white;
+    padding: 3rem 5%;
 }
 
-.footer-container {
+.footer-content {
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
 }
 
-.footer-column {
+.footer-section {
     flex: 1;
-    margin: 10px 20px;
-    min-width: 200px;
+    margin-right: 2rem;
 }
 
-.footer-column h3 {
-    margin-bottom: 20px;
-    font-size: 1.3em;
+.footer-section h3 {
+    margin-bottom: 1rem;
 }
 
-.footer-column p {
-    margin-bottom: 20px;
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.footer-column a {
-    display: block;
-    color: #fff;
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a,
+.footer-section p {
+    color: #ccc;
     text-decoration: none;
-    margin-bottom: 10px;
 }
 
-.footer-column a:hover {
-    text-decoration: underline;
+.social-icons {
+    margin-top: 1rem;
 }
 
-.footer-social {
-    display: flex;
-    gap: 10px;
-}
-
-.footer-social a img {
-    width: 20px;
-    height: 20px;
-}
-
-.footer-social a {
-    width: 30px;
-    height: 30px;
-    background-color: #333;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #fff;
-    margin-right: 30px;
-}
-
-.footer-social a:hover {
-    background-color: #555;
+.social-icons a {
+    margin-right: 0.5rem;
 }
 
 .footer-bottom {
+    margin-top: 2rem;
     text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-
-    header {
-        flex-direction: column;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .image-content {
-        position: relative;
-        width: 100%;
-        right: 0;
-        top: 0;
-    }
-
-    .food-sections {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .food-item {
-        margin: 10px 0;
-    }
-
-    .berita-container {
-        grid-template-areas:
-            "large"
-            "small1"
-            "small2"
-            "small3"
-            "small4";
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 36px;
-    }
-
-    .food-item img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .food-item h3 {
-        font-size: 1em;
-    }
-
-    .berita-card-content h3 {
-        font-size: 16px;
-    }
-
-    .berita-card-content p {
-        font-size: 12px;
-    }
+    padding-top: 1rem;
+    border-top: 1px solid #555;
 }

@@ -22,7 +22,7 @@
 
     <section class="hero">
         <img src="asd.png" alt="Hero Image">
-        <div class="hero-text">TENTANG KAMI</div>
+        <div class="hero-text">GALERI KAMI</div>
     </section>
 
     <div class="gallery-container">

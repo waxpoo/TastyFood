@@ -26,6 +26,7 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
+    
 }
 
 header nav ul {
@@ -65,50 +66,87 @@ header nav ul li a:hover {
 .hero .hero-text {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 220PX;
     transform: translate(-50%, -50%);
     font-size: 48px;
     font-weight: bold;
 }
 
-/* Main Gallery Section */
+/* Gallery Container */
 .gallery-container {
     display: flex;
     justify-content: center;
+    /* Membuat konten galeri di tengah secara horizontal */
     align-items: center;
-    margin-top: 20px;
+    flex-direction: column;
+    margin-top: 5rem;
+    /* Jarak antara gambar hero dan galeri */
+    min-height: 70vh;
+    /* Mengatur ketinggian minimum agar gambar lebih proporsional di halaman */
 }
 
 .gallery-item {
+    width: 90%;
+    /* Membuat item galeri lebih lebar (90% dari lebar kontainer) */
+    max-width: 1200px;
+    /* Batas maksimal lebar item galeri lebih besar */
     position: relative;
-    text-align: center;
+    height: auto;
+    /* Mengatur tinggi otomatis */
+    overflow: hidden;
+    margin: 0 auto;
+    /* Agar item galeri berada di tengah halaman */
 }
 
 .gallery-item img {
     width: 100%;
-    max-width: 600px;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
+    object-position: top center;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+#galleryImage {
+    width: 100%;
+    height: 500px;
+    /* Menetapkan tinggi spesifik agar terlihat lebih persegi panjang */
+    object-fit: cover;
+    object-position: center;
+    /* Posisi gambar di tengah agar bagian atas dan bawah terpotong */
     border-radius: 10px;
+    /* Memberikan sudut melengkung */
 }
 
 .controls {
     position: absolute;
     top: 50%;
-    width: 100%;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
+    /* Tombol sebelumnya dan berikutnya */
     transform: translateY(-50%);
+    padding: 0 20px;
+    z-index: 1;
 }
 
 .controls button {
     background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    /* Background tombol */
+    color: white;
     border: none;
     padding: 10px;
-    font-size: 24px;
     cursor: pointer;
     border-radius: 50%;
+    /* Bentuk bulat tombol */
+    transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Hover efek pada tombol */
 }
 
 .indicator {
@@ -128,6 +166,48 @@ header nav ul li a:hover {
 
 .indicator .active {
     background-color: #333;
+}
+
+/* Gallery Container 2 */
+.gallery-container2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 kolom untuk galeri */
+    gap: 20px;
+    padding: 20px;
+    margin-top: 40px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Gallery Item 2 */
+.gallery-item2 {
+    width: 100%;
+    height: 260px; /* Menetapkan tinggi tetap untuk menjaga bentuk kotak */
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 30px; /* Mengatur jarak sisi kanan dan kiri */
+}
+
+.gallery-item2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Memastikan gambar memenuhi kotak tanpa distorsi */
+    transition: transform 0.3s ease;
+    border-radius: 20px;
+}
+
+.gallery-item2:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item2 img:hover {
+    transform: scale(1.05);
 }
 
 /* Grid Artikel */
@@ -221,7 +301,7 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.footer-section ul li a, 
+.footer-section ul li a,
 .footer-section p {
     color: #ccc;
     text-decoration: none;

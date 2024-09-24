@@ -21,7 +21,7 @@
     </header>
     <section class="hero">
         <img src="asd.png" alt="Hero Image">
-        <div class="hero-text">GALERI KAMI</div>
+        <div class="hero-text">KONTAK KAMI</div>
     </section>
     
     <main>

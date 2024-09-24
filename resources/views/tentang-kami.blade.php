@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Food</title>
     <link rel="stylesheet" href="css/tentang.css">
 </head>
+
 <body>
+
     <header>
         <div class="logo">TASTY FOOD</div>
         <nav>
@@ -35,6 +38,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare, augue eu 
                         rutrum commodo, dui diam convallis arcu, eget consectetur ex sem eget lacus.</p>
                 </div>
+                
                 <div class="about-images">
                     <img src="{{ asset('imm1.jpg') }}" alt="Food 1">
                     <img src="{{ asset('gambar7.jpg') }}" alt="Chef">

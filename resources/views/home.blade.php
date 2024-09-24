@@ -22,7 +22,6 @@
                 <a href="galeri-kami">Galeri</a>
                 <a href="kontak-kami">Kontak</a>
 
-
             </nav>
         </div>
     </header>
@@ -30,7 +29,7 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <div class="container">
+        <div class="container-hero">
             <div class="content">
                 <div class="text-content">
                     <div class="line"></div>
@@ -48,7 +47,7 @@
 
         <!-- Tentang Kami Section -->
         <section id="tentang-kami" class="tentang-kami-content">
-            <div class="container">
+            <div class="container-tentang">
                 <h2>TENTANG KAMI</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare, augue eu rutrum commodo,
                     dui diam convallis arcu, eget consectetur ex sem eget lacus. Nullam vitae dignissim neque, vel
@@ -89,7 +88,7 @@
 
         <!-- Berita Kami Section -->
         <section id="berita-kami" class="berita-kami">
-            <div class="container">
+            <div class="container-berita">
                 <h2>BERITA KAMI</h2>
                 <div class="background"></div>
                 <div class="berita-container">
@@ -138,7 +137,7 @@
                             <h3>LOREM IPSUM</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare, augue eu
                                 rutrum commodo,</p>
-                            <a href="#">Baca selengkapnya</a>
+                            <a href="berita-kami">Baca selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -170,44 +169,52 @@
                     </div>
                 </div>
                 <div class="gallery-button">
-                    <button>LIHAT LEBIH BANYAK</button>
+                    <a href="galeri-kami" class="btn">galeri kami</a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-column">
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
                 <h3>Tasty Food</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-                <div class="footer-social">
-                    <a href="#"><img src="001-facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="002-twitter.png" alt="Twitter"></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                     commodo consequat.</p>
+                <div class="social-icons">
+                    <a href="#"><img src="{{ asset('001-facebook.png') }}" alt="Facebook"></a>
+                    <a href="#"><img src="{{ asset('002-twitter.png') }}" alt="Twitter"></a>
                 </div>
             </div>
-            <div class="footer-column">
-                <h3>Useful Links</h3>
-                <a href="#">Blog</a>
-                <a href="#">Hewan</a>
-                <a href="#">Galeri</a>
-                <a href="#">Testimonial</a>
+            <div class="footer-section">
+                <h3>Useful links</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Hewan</a></li>
+                    <li><a href="#">Galeri</a></li>
+                    <li><a href="#">Testimonial</a></li>
+                </ul>
             </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h3>Privacy</h3>
-                <a href="#">Karir</a>
-                <a href="#">Tentang Kami</a>
-                <a href="#">Kontak Kami</a>
-                <a href="#">Servis</a>
+                <ul>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                    <li><a href="#">Servis</a></li>
+                </ul>
             </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h3>Contact Info</h3>
-                <p><a href="mailto:tastyfood@gmail.com">tastyfood@gmail.com</a></p>
-                <p><a href="tel:+62878888990">+62 878 888 990</a></p>
+                <p>tastyfood@gmail.com</p>
+                <p>+62 812 3456 7890</p>
+                <p>Kota Bandung, Jawa Barat</p>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 All rights reserved</p>
         </div>
     </footer>
 

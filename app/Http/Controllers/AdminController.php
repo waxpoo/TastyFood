@@ -107,7 +107,7 @@ class AdminController extends Controller
     public function storeGaleri(Request $request)
     {
         $validated = $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5048',
         ]);
 
         // Simpan gambar dan ambil path
