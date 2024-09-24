@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+/* Header CSS */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: transparent;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+header nav ul li a:hover {
+    color: #f4f4f4;
+}
+
+/* Hero Section CSS */
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.hero .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 245PX;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: bold;
+}
+
+/* About section */
+.about { 
+    padding: 4rem 5%;
+    background-color: #efefef;
+    margin-bottom: 2rem;
+}
+
+.about h2, 
+.vision h2, 
+.mission h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-content, 
+.vision, 
+.mission {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+    padding-right: 2rem;
+    line-height: 1.6; /* Menambah jarak antar baris untuk keterbacaan */
+}
+
+.about-text p {
+    margin-bottom: 1.5rem; /* Jarak antar paragraf */
+}
+
+.about-images {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-images img {
+    width: 48%;
+    border-radius: 10px;
+}
+
+/* Vision section */
+.vision {
+    padding: 4rem 5%;
+}
+
+.vision-images {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vision-images img {
+    width: 48%;
+    height: 280px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.vision-text {
+    flex: 1;
+    padding-left: 2rem;
+    line-height: 1.6; /* Menambah jarak antar baris untuk keterbacaan */
+}
+
+.vision-text p {
+    margin-bottom: 1.5rem; /* Jarak antar paragraf */
+}
+
+/* Mission section */
+.mission {
+    padding: 4rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mission-text {
+    flex: 1;
+    padding-right: 2rem;
+    line-height: 1.6;
+}
+
+.mission-text p {
+    margin-bottom: 1.5rem;
+}
+
+.mission-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission-image img {
+    width: 80%; /* Menyesuaikan lebar gambar */
+    height: 230px; /* Menetapkan tinggi gambar untuk membuatnya persegi panjang horizontal */
+    border-radius: 10px;
+    object-fit: cover; /* Memastikan gambar terpotong dengan baik */
+}
+
+
+
+/* Footer styles */
+footer {
+    background-color: #000000;
+    color: white;
+    padding: 3rem 5%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a, 
+.footer-section p {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.social-icons {
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    margin-right: 0.5rem;
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #555;
+}
+
+
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .about-content, 
+    .vision, 
+    .mission, 
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .about-images, 
+    .vision-images, 
+    .mission-image {
+        margin-top: 2rem;
+    }
+
+    .footer-section {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Media Queries */
+
+/* Tablet and Mobile */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .hero .hero-text {
+        font-size: 36px;
+    }
+
+    .about-content, 
+    .vision, 
+    .mission {
+        flex-direction: column;
+    }
+
+    .about-images, 
+    .vision-images, 
+    .mission-image {
+        margin-top: 2rem;
+    }
+
+    .about-images img,
+    .vision-images img,
+    .mission-image img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .hero img {
+        height: 300px;
+    }
+
+    .hero .hero-text {
+        font-size: 24px;
+    }
+
+    .about {
+        padding: 2rem 1rem;
+    }
+
+    .about-content, 
+    .vision, 
+    .mission {
+        flex-direction: column;
+    }
+
+    .about-images img,
+    .vision-images img,
+    .mission-image img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 2rem;
+        margin-right: 0;
+    }
+}
+
+/* Media Queries untuk Layar Kecil (hp kecil) */
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        flex-direction: column;
+        padding: 10px;
+        text-align: center;
+        font-size: 5px;
+    }
+
+    header .logo {
+        font-size: 20px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+    }
+
+    /* Hero Section */
+    .hero img {
+        height: 200px;
+    }
+
+    .hero .hero-text {
+        font-size: 10px;
+        left: 60px;
+    }
+
+    /* About Section */
+    .about {
+        padding: 1rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-images {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .about-images img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    /* Vision Section */
+    .vision {
+        padding: 1rem;
+    }
+
+    .vision-images {
+        flex-direction: column;
+    }
+
+    .vision-images img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    /* Mission Section */
+    .mission {
+        padding: 1rem;
+        flex-direction: column;
+    }
+
+    .mission-text {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .mission-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mission-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 2rem;
+        margin-right: 0;
+    }
+
+    .footer-section ul {
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .social-icons {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .social-icons a {
+        margin: 0 5px;
+    }
+}

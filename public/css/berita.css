@@ -1,0 +1,264 @@
+/* Reset CSS untuk menghapus margin dan padding default serta mengatur box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mengatur gaya umum untuk body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: transparent;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+header nav ul li a:hover {
+    color: #f4f4f4;
+}
+
+/* Hero Section CSS */
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.hero .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: bold;
+}
+/* Gaya untuk artikel utama */
+.main-article {
+    display: flex;
+    justify-content: left ; /* Pusatkan konten di tengah */
+    background-color: #dcdcdc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    align-items: left;
+    width: 100%;
+}
+
+/* Gaya untuk gambar artikel utama */
+.main-article img {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Gaya untuk konten artikel utama */
+.main-article-content {
+    flex: 2;
+    padding: 10px;
+    max-width: 600px; /* Batasi lebar konten agar tidak terlalu lebar */
+}
+
+.main-article-content h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.main-article-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Gaya untuk tombol */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000; /* Warna hitam */
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 10px;
+    border: none; /* Menghilangkan border */
+    border-radius: 8px; /* Tambahkan border-radius untuk sudut melengkung */
+}
+
+/* Gaya untuk tombol CRUD */
+/* Gaya untuk tombol CRUD */
+.crud-button {
+    display: inline-block;
+    width: 150px; /* Sesuaikan lebar tombol */
+    height: auto; /* Biarkan tinggi menyesuaikan dengan konten */
+    background-color: #000000; /* Warna latar belakang biru */
+    color: #fff; /* Warna teks putih */
+    text-align: center; /* Pusatkan teks di dalam tombol */
+    padding: 10px 20px; /* Padding untuk jarak dalam tombol */
+    font-size: 1em; /* Ukuran font */
+    font-weight: bold; /* Teks tebal */
+    text-decoration: none; /* Menghapus garis bawah teks */
+    border-radius: 8px; /* Sudut tombol melengkung */
+    border: none; /* Hapus border */
+    cursor: pointer; /* Kursor berubah menjadi pointer saat hover */
+    transition: background-color 0.3s ease; /* Efek transisi untuk background color */
+}
+
+/* Gaya saat tombol di-hover */
+.crud-button:hover {
+    background-color: #0056b3; /* Warna latar belakang saat di-hover */
+}
+
+/* Grid Artikel */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Kartu Artikel */
+.article-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* Gambar Kartu Artikel */
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block; /* Pastikan gambar tidak ada margin */
+    margin: 0; /* Hapus margin */
+    border-radius: 20px 20px 0 0; /* Sesuaikan sudut untuk menyatu dengan box */
+}
+
+/* Konten Kartu Artikel */
+.article-content {
+    padding: 15px;
+}
+
+.article-content h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.article-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.article-content .btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: rgb(255, 119, 0);
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.article-content .btn:hover {
+    background-color: #ff6347;
+}
+
+/* Footer styles */
+footer {
+    background-color: #000000;
+    color: white;
+    padding: 3rem 5%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a, 
+.footer-section p {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.social-icons {
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    margin-right: 0.5rem;
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #555;
+}

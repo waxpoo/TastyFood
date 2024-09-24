@@ -1,0 +1,192 @@
+/* Reset CSS untuk menghapus margin dan padding default serta mengatur box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mengatur gaya umum untuk body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Gaya untuk header */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 1.5em;
+}
+
+.header-content .btn {
+    background-color: #f39537;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.header-content .btn:hover {
+    background-color: #e58326;
+}
+
+/* Gaya untuk main */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Gaya untuk formulir */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form textarea:focus {
+    border-color: #f39537;
+    outline: none;
+}
+
+form button.btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button.btn:hover {
+    background-color: #333;
+}
+
+/* Gaya untuk tombol khusus dengan warna merah */
+form button.btn-danger {
+    background-color: #ff0800;
+}
+
+form button.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* Gaya untuk tampilan artikel */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.article-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-card img {
+    width: 100%;
+    height: auto;
+}
+
+.article-content {
+    padding: 15px;
+}
+
+.article-content h4 {
+    margin-bottom: 10px;
+}
+
+.article-content p {
+    margin-bottom: 15px;
+}
+
+/* Gaya untuk tombol edit dan hapus pada daftar berita */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons a,
+.action-buttons button {
+    background-color: #f39537;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-buttons a:hover,
+.action-buttons button:hover {
+    background-color: #e58326;
+}
+
+.action-buttons .btn-danger {
+    background-color: #ff0800;
+}
+
+.action-buttons .btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* Gaya untuk pagination jika ada */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+    background-color: #f39537;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.pagination a:hover {
+    background-color: #e58326;
+}

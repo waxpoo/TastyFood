@@ -1,0 +1,257 @@
+/* Reset CSS untuk menghapus margin dan padding default serta mengatur box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mengatur gaya umum untuk body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Gaya untuk header */
+header {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Gaya untuk konten header, termasuk judul dan navigasi */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Memastikan konten header ditata dengan baik */
+    padding: 10px 20px;
+    background-color: transparent;
+}
+
+/* Gaya untuk navigasi */
+nav {
+    background-color: transparent; /* Background navigasi dengan transparansi */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Gaya untuk area hero */
+.hero {
+    position: relative;
+    text-align: left;
+    color: white;
+}
+
+.hero img { 
+    width: 100%;
+    height: 120%;
+    opacity: 0.7;
+}
+
+.hero h2 {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* Mengubah posisi ke kiri */
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Gaya untuk artikel utama */
+.main-article {
+    display: flex;
+    justify-content: center; /* Pusatkan konten di tengah */
+    gap: 20px;
+    background-color: #dcdcdc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: center;
+    width: 100vw; /* Pastikan lebar 100% dari viewport */
+    margin: 0; /* Hapus margin */
+}
+
+/* Gaya untuk gambar artikel utama */
+.main-article img {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Gaya untuk konten artikel utama */
+.main-article-content {
+    flex: 2;
+    padding: 10px;
+    max-width: 600px; /* Batasi lebar konten agar tidak terlalu lebar */
+}
+
+.main-article-content h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.main-article-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Gaya untuk tombol */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000; /* Warna hitam */
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 10px;
+    border: none; /* Menghilangkan border */
+    border-radius: 8px; /* Tambahkan border-radius untuk sudut melengkung */
+}
+
+/* Gaya untuk tombol CRUD */
+/* Gaya untuk tombol CRUD */
+.crud-button {
+    display: inline-block;
+    width: 150px; /* Sesuaikan lebar tombol */
+    height: auto; /* Biarkan tinggi menyesuaikan dengan konten */
+    background-color: #000000; /* Warna latar belakang biru */
+    color: #fff; /* Warna teks putih */
+    text-align: center; /* Pusatkan teks di dalam tombol */
+    padding: 10px 20px; /* Padding untuk jarak dalam tombol */
+    font-size: 1em; /* Ukuran font */
+    font-weight: bold; /* Teks tebal */
+    text-decoration: none; /* Menghapus garis bawah teks */
+    border-radius: 8px; /* Sudut tombol melengkung */
+    border: none; /* Hapus border */
+    cursor: pointer; /* Kursor berubah menjadi pointer saat hover */
+    transition: background-color 0.3s ease; /* Efek transisi untuk background color */
+}
+
+/* Gaya saat tombol di-hover */
+.crud-button:hover {
+    background-color: #0056b3; /* Warna latar belakang saat di-hover */
+}
+
+
+/* Gaya untuk grid artikel lainnya */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px; /* Batasi lebar maksimum grid */
+    margin: 0 auto; /* Pusatkan grid artikel lainnya */
+    padding: 0 20px; /* Jarak kiri dan kanan */
+}
+
+/* Gaya untuk kartu artikel lainnya */
+.article-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 8px; /* Menambahkan sudut membulat pada kartu */
+}
+
+/* Gaya untuk gambar dalam kartu artikel lainnya */
+.article-card img {
+    width: 100%;
+    height: 240px; /* Atur tinggi gambar sesuai keinginan */
+    object-fit: cover;
+    border-top-left-radius: 8px; /* Membulatkan sudut atas kiri gambar */
+    border-top-right-radius: 8px; /* Membulatkan sudut atas kanan gambar */
+}
+
+/* Gaya untuk konten dalam kartu artikel lainnya */
+.article-content {
+    padding: 15px;
+}
+
+.article-content h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.article-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Gaya untuk footer */
+footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 40px 20px; /* Tambahkan padding atas dan bawah untuk memperpanjang footer */
+    margin-top: 40px; /* Jarak atas dari konten sebelumnya */
+}
+
+/* Gaya untuk konten footer, termasuk bagian-bagian footer */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-about,
+.footer-links,
+.footer-privacy,
+.footer-contact {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Gaya untuk judul di bagian footer */
+.footer-about h4,
+.footer-links h4,
+.footer-privacy h4,
+.footer-contact h4 {
+    margin-bottom: 10px;
+}
+
+/* Gaya untuk paragraf dan link di footer */
+.footer-about p,
+.footer-contact p,
+.footer-contact a {
+    font-size: 0.9em;
+}
+
+/* Gaya untuk daftar di footer */
+.footer-links ul,
+.footer-privacy ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li,
+.footer-privacy ul li {
+    margin-bottom: 5px;
+}
+
+.footer-links ul li a,
+.footer-privacy ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Gaya untuk link sosial media */
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-links img {
+    width: 20px;
+    height: 20px;
+}
