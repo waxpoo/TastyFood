@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Food - Galeri Kami</title>
     <link rel="stylesheet" href="css/galeri.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
     <header>
         <div class="logo">TASTY FOOD</div>
@@ -89,36 +92,60 @@
     </footer>
 
     <script>
-        const images = ['imm2.jpg'];
+        const images = ['imm2.jpg', 'imm1.jpg', 'imm3.jpg'];
         let currentIndex = 0;
         const galleryImage = document.getElementById('galleryImage');
         const indicators = document.querySelectorAll('.indicator div');
 
-        function showImage(index) {
-            galleryImage.src = images[index];
+        function showImage(index, direction) {
+            const currentImage = document.createElement('img');
+            currentImage.src = images[currentIndex];
+            currentImage.classList.add('active'); // Tambahkan kelas 'active' untuk gambar yang sedang ditampilkan
+
+            const nextImage = document.createElement('img');
+            nextImage.src = images[index];
+            nextImage.classList.add(direction === 'next' ? 'next' : 'prev'); // Tentukan arah pergeseran
+
+            const galleryItem = document.querySelector('.gallery-item');
+            galleryItem.appendChild(nextImage);
+
+            setTimeout(() => {
+                currentImage.classList.remove('active');
+                nextImage.classList.add('active'); // Jadikan gambar baru sebagai 'active'
+                nextImage.classList.remove(direction === 'next' ? 'next' :
+                'prev'); // Hilangkan kelas 'next' atau 'prev'
+
+                setTimeout(() => {
+                    galleryItem.removeChild(currentImage); // Hapus gambar lama setelah transisi selesai
+                }, 500); // Durasi transisi sesuai dengan CSS
+            }, 0);
+
+            currentIndex = index; // Update indeks gambar aktif
+
             indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === index);
+                indicator.classList.toggle('active', i === index); // Ubah indikator aktif
             });
         }
 
         document.getElementById('prev').addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            showImage(currentIndex);
+            const newIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            showImage(newIndex, 'prev');
         });
 
         document.getElementById('next').addEventListener('click', () => {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            showImage(currentIndex);
+            const newIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(newIndex, 'next');
         });
 
         indicators.forEach((indicator, i) => {
             indicator.addEventListener('click', () => {
-                currentIndex = i;
-                showImage(currentIndex);
+                const direction = (i > currentIndex) ? 'next' : 'prev';
+                showImage(i, direction);
             });
         });
 
-        showImage(currentIndex);
+        showImage(currentIndex, 'next'); // Tampilkan gambar pertama dengan transisi ke kanan
     </script>
 </body>
+
 </html>

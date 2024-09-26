@@ -186,9 +186,10 @@ header nav ul li a:hover {
 .article-card {
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15); 
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
 }
 
 .article-card:hover {
@@ -246,7 +247,7 @@ header nav ul li a:hover {
 footer {
     background-color: #000000;
     color: white;
-    padding: 3rem 5%;
+    padding: 4rem 5%;
 }
 
 .footer-content {

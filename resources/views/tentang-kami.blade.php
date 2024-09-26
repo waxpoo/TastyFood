@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Food</title>
     <link rel="stylesheet" href="css/tentang.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
