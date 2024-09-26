@@ -71,15 +71,20 @@ header nav ul li a:hover {
     font-size: 48px;
     font-weight: bold;
 }
+
 /* Gaya untuk artikel utama */
+/* Tambahkan jarak di bawah main-article */
+
 .main-article {
     display: flex;
-    justify-content: left ; /* Pusatkan konten di tengah */
+    justify-content: left;
     background-color: #dcdcdc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 50px;
     align-items: left;
     width: 100%;
+    margin-bottom: 50px;
+    /* Menambahkan jarak di bawah main-article */
 }
 
 /* Gaya untuk gambar artikel utama */
@@ -95,13 +100,17 @@ header nav ul li a:hover {
 .main-article-content {
     flex: 2;
     padding: 10px;
-    max-width: 600px; /* Batasi lebar konten agar tidak terlalu lebar */
+    max-width: 600px;
+    /* Batasi lebar konten agar tidak terlalu lebar */
 }
 
-.main-article-content h3 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
+.other-articles h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding-left: 185px;
+    /* Atur jarak dari kiri ke kanan sebanyak 20px */
+    text-align: left;
+    /* Pastikan teks tetap rata kiri */
 }
 
 .main-article-content p {
@@ -113,37 +122,54 @@ header nav ul li a:hover {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #000000; /* Warna hitam */
+    background-color: #000000;
+    /* Warna hitam */
     color: #fff;
     text-decoration: none;
     font-size: 0.9em;
     margin-top: 10px;
-    border: none; /* Menghilangkan border */
-    border-radius: 8px; /* Tambahkan border-radius untuk sudut melengkung */
+    border: none;
+    /* Menghilangkan border */
+    border-radius: 8px;
+    /* Tambahkan border-radius untuk sudut melengkung */
 }
 
 /* Gaya untuk tombol CRUD */
 /* Gaya untuk tombol CRUD */
 .crud-button {
     display: inline-block;
-    width: 150px; /* Sesuaikan lebar tombol */
-    height: auto; /* Biarkan tinggi menyesuaikan dengan konten */
-    background-color: #000000; /* Warna latar belakang biru */
-    color: #fff; /* Warna teks putih */
-    text-align: center; /* Pusatkan teks di dalam tombol */
-    padding: 10px 20px; /* Padding untuk jarak dalam tombol */
-    font-size: 1em; /* Ukuran font */
-    font-weight: bold; /* Teks tebal */
-    text-decoration: none; /* Menghapus garis bawah teks */
-    border-radius: 8px; /* Sudut tombol melengkung */
-    border: none; /* Hapus border */
-    cursor: pointer; /* Kursor berubah menjadi pointer saat hover */
-    transition: background-color 0.3s ease; /* Efek transisi untuk background color */
+    width: 150px;
+    /* Sesuaikan lebar tombol */
+    height: auto;
+    /* Biarkan tinggi menyesuaikan dengan konten */
+    background-color: #000000;
+    /* Warna latar belakang biru */
+    color: #fff;
+    /* Warna teks putih */
+    text-align: center;
+    /* Pusatkan teks di dalam tombol */
+    padding: 10px 20px;
+    /* Padding untuk jarak dalam tombol */
+    font-size: 1em;
+    /* Ukuran font */
+    font-weight: bold;
+    /* Teks tebal */
+    text-decoration: none;
+    /* Menghapus garis bawah teks */
+    border-radius: 8px;
+    /* Sudut tombol melengkung */
+    border: none;
+    /* Hapus border */
+    cursor: pointer;
+    /* Kursor berubah menjadi pointer saat hover */
+    transition: background-color 0.3s ease;
+    /* Efek transisi untuk background color */
 }
 
 /* Gaya saat tombol di-hover */
 .crud-button:hover {
-    background-color: #0056b3; /* Warna latar belakang saat di-hover */
+    background-color: #0056b3;
+    /* Warna latar belakang saat di-hover */
 }
 
 /* Grid Artikel */
@@ -169,14 +195,18 @@ header nav ul li a:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 /* Gambar Kartu Artikel */
 .article-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block; /* Pastikan gambar tidak ada margin */
-    margin: 0; /* Hapus margin */
-    border-radius: 20px 20px 0 0; /* Sesuaikan sudut untuk menyatu dengan box */
+    display: block;
+    /* Pastikan gambar tidak ada margin */
+    margin: 0;
+    /* Hapus margin */
+    border-radius: 20px 20px 0 0;
+    /* Sesuaikan sudut untuk menyatu dengan box */
 }
 
 /* Konten Kartu Artikel */
@@ -242,7 +272,7 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.footer-section ul li a, 
+.footer-section ul li a,
 .footer-section p {
     color: #ccc;
     text-decoration: none;

@@ -49,18 +49,18 @@
 
             <div class="article-grid">
                 @foreach ($berita as $item)
-                <div class="article-card">
-                    @if ($item->gambar)
-                    <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="{{ $item->gambar }}">
-                    @else
-                    <img src="{{ asset('images/....') }}" alt="Gambar Default">
-                    @endif
-                    <div class="article-content">
-                        <h4>{{ $item->judul }}</h4>
-                        <p>{{ Str::limit($item->isi, 100) }}</p>
-                        <a href="#" class="btn">Baca Selengkapnya</a>
+                    <div class="article-card">
+                        @if ($item->gambar)
+                            <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="{{ $item->gambar }}">
+                        @else
+                            <img src="{{ asset('images/....') }}" alt="Gambar Default">
+                        @endif
+                        <div class="article-content">
+                            <h4>{{ $item->judul }}</h4>
+                            <p>{{ Str::limit($item->isi, 100) }}</p>
+                            <a href="#" class="btn">Baca Selengkapnya</a>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </section>
