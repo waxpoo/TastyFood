@@ -27,17 +27,18 @@
                 <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                 <li><a href="{{ route('berita.create') }}">Tambah Berita</a></li>
                 <li><a href="{{ route('galeri.create') }}">Tambah Galeri</a></li>
+                <li><a href="{{ route('edit.map') }}">Edit Peta</a></li>
                 <li><a href="{{ route('edit-tentang') }}">Edit Tentang Kami</a></li>
-                <li><a href="{{ route('logout') }}"
+                <li>
+                    <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 </li>
             </ul>
-        
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         </nav>
-        
 
         <!-- Main Content -->
         <div class="main-content">
@@ -45,8 +46,8 @@
                 <div class="header-content">
                     <h1>Dashboard Admin</h1>
                     <a href="{{ route('home') }}" class="btn">Kembali ke Halaman Utama</a>
-                    <a href="{{ route('daftar-berita') }}" class="btn">daftar berita</a>
-                    <a href="{{ route('daftar-galeri') }}" class="btn">daftar berita</a>
+                    <a href="{{ route('daftar-berita') }}" class="btn">Daftar Berita</a>
+                    <a href="{{ route('daftar-galeri') }}" class="btn">Daftar Galeri</a>
                 </div>
             </header>
 

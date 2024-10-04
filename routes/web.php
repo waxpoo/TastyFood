@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +30,13 @@ Route::middleware('auth')->group(function () {
 
 // Admin Routes (akses hanya untuk admin yang terautentikasi)
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+
     Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/daftar-berita', [AdminController::class, 'daftarBerita'])->name('daftar-berita');
     Route::get('/daftar-galeri', [AdminController::class, 'daftarGaleri'])->name('daftar-galeri');
-    
+    Route::get('/create-map', [AdminController::class, 'create'])->name('create.map');
+
+
     // Formulir CRUD Berita
     Route::get('/berita/create', [AdminController::class, 'createBerita'])->name('berita.create');
     Route::post('/berita', [AdminController::class, 'storeBerita'])->name('berita.store');
@@ -51,4 +55,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     // Rute untuk Tentang Kami
     Route::get('/edit-tentang', [AdminController::class, 'editTentangKami'])->name('edit-tentang');
     Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('update-tentang');
+
+    // Rute untuk Mappss
+    Route::get('/edit-map', [AdminController::class, 'editMap'])->name('edit.map');
+    Route::post('/update-map', [AdminController::class, 'updateMap'])->name('update.map');
 });

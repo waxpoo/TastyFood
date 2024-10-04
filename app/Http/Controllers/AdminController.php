@@ -6,8 +6,8 @@ use App\Models\User;
 use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Tentang;
+use App\Models\Map;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -15,18 +15,22 @@ class AdminController extends Controller
     // Tampilkan halaman dashboard admin
     public function adminDashboard()
     {
-        $totalBerita = Berita::count(); // Hitung total berita
-        $totalGaleri = Galeri::count(); // Hitung total galeri
-        $allBerita = Berita::all(); // Ambil semua berita
-        $allGaleri = Galeri::all(); // Ambil semua galeri
+        $totalBerita = Berita::count();
+        $totalGaleri = Galeri::count();
+        $allBerita = Berita::all();
+        $allGaleri = Galeri::all();
+        $map = Map::first(); // Mengambil peta pertama
 
-        return view('admin.dashboard', compact('totalBerita', 'totalGaleri', 'allBerita', 'allGaleri'));
+        return view('admin.dashboard', compact('totalBerita', 'totalGaleri', 'allBerita', 'allGaleri', 'map'));
     }
+
+    // TENTANG
     public function editTentangKami(Request $request)
     {
-        $tentang = Tentang::first(); // Ambil data pertama dari tabel tentang
+        $tentang = Tentang::first();
         return view('admin.edit-tentang', compact('tentang'));
     }
+
     public function updateTentangKami(Request $request)
     {
         $request->validate([
@@ -35,17 +39,13 @@ class AdminController extends Controller
             'mission_text' => 'required',
         ]);
 
-        $tentang = Tentang::first(); // Ambil data pertama dari tabel tentang
-        $tentang->about_text = $request->about_text;
-        $tentang->vision_text = $request->vision_text;
-        $tentang->mission_text = $request->mission_text;
-        $tentang->save();
+        $tentang = Tentang::first();
+        $tentang->update($request->only(['about_text', 'vision_text', 'mission_text']));
 
-        return redirect()->route('edit-tentang')->with('success', 'Tentang Kami berhasil diperbarui.');
+        return redirect()->route('admin.dashboard')->with('success', 'Data tentang berhasil diperbarui.');
     }
 
-
-    // Fungsi Berita
+    // FUNGSI BERITA
     public function createBerita()
     {
         return view('admin.create-berita');
@@ -54,16 +54,14 @@ class AdminController extends Controller
     public function daftarBerita()
     {
         $allBerita = Berita::all();
-        return view('admin.daftar-berita', compact('allBerita')); // Pastikan ini sesuai
+        return view('admin.daftar-berita', compact('allBerita'));
     }
-
-    //store
     public function storeBerita(Request $request)
     {
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'isi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'nullable|image|max:2048', // Gambar sekarang bisa berupa file gambar apa saja
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -75,59 +73,51 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil ditambahkan.');
     }
-    //edit
-    public function editBerita(Berita $berita)
-    {
-        return view('admin.edit-berita', compact('berita'));
-    }
-    //update
     public function updateBerita(Request $request, Berita $berita)
     {
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'isi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'nullable|image|max:2048', // Gambar sekarang bisa berupa file gambar apa saja
         ]);
 
         if ($request->hasFile('gambar')) {
             $imagePath = $request->file('gambar')->store('public/gambar');
             $validated['gambar'] = basename($imagePath);
         } else {
-            $validated['gambar'] = $berita->gambar;
+            $validated['gambar'] = $berita->gambar; // Tetap gunakan gambar yang ada jika tidak ada gambar baru
         }
 
         $berita->update($validated);
 
         return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diperbarui.');
     }
-    //destroy
+
+
     public function destroyBerita(Berita $berita)
     {
         $berita->delete();
-
         return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
     }
 
-    // Fungsi Galeri
-    //crate
+    // FUNGSI GALERI
     public function createGaleri()
     {
         return view('admin.create-galeri');
     }
-    //daftar
+
     public function daftarGaleri()
     {
-        $allGaleri = Galeri::all(); // Pastikan model Galeri sudah ada
-        return view('admin.daftar-galeri', compact('allGaleri')); // Kirimkan data ke view
+        $allGaleri = Galeri::all();
+        return view('admin.daftar-galeri', compact('allGaleri'));
     }
 
-    //show
     public function showGaleri()
     {
         $galeriItems = Galeri::all();
         return view('admin.galeri-kami', compact('galeriItems'));
     }
-    //store
+
     public function storeGaleri(Request $request)
     {
         $validated = $request->validate([
@@ -141,13 +131,13 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Gambar berhasil ditambahkan.');
     }
-    //edit
+
     public function editGaleri($id)
     {
         $galeriItem = Galeri::findOrFail($id);
         return view('admin.edit-galeri', compact('galeriItem'));
     }
-    //update
+
     public function updateGaleri(Request $request, $id)
     {
         $galeriItem = Galeri::findOrFail($id);
@@ -167,11 +157,10 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Gambar berhasil diperbarui.');
     }
-    //destroy
+
     public function destroyGaleri(Galeri $galeri)
     {
         $galeri->delete();
-
         return redirect()->route('admin.dashboard')->with('success', 'Gambar berhasil dihapus.');
     }
 
@@ -198,5 +187,39 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
+    }
+    // FUNGSI MAPS
+    public function editMap()
+    {
+        // Mengambil data peta pertama
+        $map = Map::first();
+
+        if (!$map) {
+            return redirect()->route('admin.maps')->with('error', 'Peta tidak ditemukan.');
+        }
+
+        // Menampilkan form edit peta dengan data yang ada
+        return view('admin.edit-map', compact('map'));
+    }
+    public function updateMap(Request $request)
+    {
+        $validated = $request->validate([
+            'latitude' => 'required|numeric|max:90', // Menambahkan validasi numerik
+            'longitude' => 'required|numeric|max:180', // Menambahkan validasi numerik
+        ]);
+
+        $map = Map::first();
+
+        if (!$map) {
+            return redirect()->route('admin.maps')->with('error', 'Peta tidak ditemukan.');
+        }
+
+        // Update data peta
+        $map->update([
+            'latitude' => (float)$validated['latitude'], // Casting ke float
+            'longitude' => (float)$validated['longitude'], // Casting ke float
+        ]);
+
+        return redirect()->route('admin.dashboard')->with('success', 'Peta berhasil diperbarui.');
     }
 }

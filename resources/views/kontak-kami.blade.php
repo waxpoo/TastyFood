@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Food - Kontak Kami</title>
     <link rel="stylesheet" href="{{ asset('css/kontak.css') }}">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
+
 <body>
     <header>
         <div class="logo">TASTY FOOD</div>
@@ -24,7 +28,7 @@
         <img src="asd.png" alt="Hero Image">
         <div class="hero-text">KONTAK KAMI</div>
     </section>
-    
+
     <main>
         <section class="contact-form">
             <h2>KONTAK KAMI</h2>
@@ -81,26 +85,47 @@
                 </div>
             </div>
         </section>
+        @php
+        // Ambil peta berdasarkan ID yang sesuai
+        $map = App\Models\Map::first(); // Pastikan ini sesuai dengan ID peta yang ingin ditampilkan
+    @endphp
+    
+    <section class="map" style="text-align: center; margin: 20px 0;">
+        @if ($map && $map->latitude && $map->longitude) 
+            <div id="map" style="width: 80%; height: 450px; margin: 0 auto;"></div> 
+            
+            <script>
+                // Inisialisasi peta dengan koordinat dari database
+                var map = L.map('map').setView([{{ $map->latitude }}, {{ $map->longitude }}], 13); 
+    
+                // Menambahkan layer peta dari OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                }).addTo(map);
+    
+                // Menambahkan marker di peta
+                L.marker([{{ $map->latitude }}, {{ $map->longitude }}]).addTo(map)
+                    .bindPopup('Lokasi: Kota Bandung, Jawa Barat'); 
+            </script>
+            
+            <!-- Menampilkan gambar -->
+            @if ($map->image) <!-- Pastikan ada data gambar -->
+                <img src="{{ asset('storage/' . $map->image) }}" alt="Peta Lokasi" style="width: 100%; margin-top: 20px;"/>
+            @endif
+            
+        @else
+            <p>Data peta tidak tersedia atau koordinat tidak valid.</p> 
+        @endif
+    </section>
         
 
-        <section class="map">
-            <iframe 
-                src="https://www.google.com/maps/embed?q=bandung,jawabarat" 
-                width="600" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </section>
-     
         <footer>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Tasty Food</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                         commodo consequat.</p>
+                        commodo consequat.</p>
                     <div class="social-icons">
                         <a href="#"><img src="{{ asset('001-facebook.png') }}" alt="Facebook"></a>
                         <a href="#"><img src="{{ asset('002-twitter.png') }}" alt="Twitter"></a>
@@ -135,5 +160,7 @@
                 <p>&copy; 2023 All rights reserved</p>
             </div>
         </footer>
+    </main>
 </body>
+
 </html>
