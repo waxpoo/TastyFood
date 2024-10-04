@@ -25,7 +25,7 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
-    
+
 }
 
 header nav ul {
@@ -72,61 +72,78 @@ header nav ul li a:hover {
 }
 
 /* About section */
-.about { 
+.about {
     padding: 4rem 5%;
     background-color: #efefef;
     margin-bottom: 2rem;
 }
 
-.about h2, 
-.vision h2, 
+.about h2,
+.vision h2,
 .mission h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
 }
 
-.about-content, 
-.vision, 
-.mission {
+.about-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    /* Memastikan teks dan gambar sejajar secara vertikal */
 }
 
+/* Teks di sebelah kiri */
 .about-text {
     flex: 1;
     padding-right: 2rem;
-    line-height: 1.6; /* Menambah jarak antar baris untuk keterbacaan */
+    line-height: 1.6;
+    /* Menambah jarak antar baris untuk keterbacaan */
 }
 
 .about-text p {
-    margin-bottom: 1.5rem; /* Jarak antar paragraf */
+    margin-bottom: 1.5rem;
+    /* Jarak antar paragraf */
 }
 
+/* Gambar di sebelah kanan */
 .about-images {
     flex: 1;
+    /* Membuat div gambar mengambil ruang yang sama */
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    /* Mengatur gambar di sebelah kanan */
+    gap: 20px;
+    /* Menambahkan jarak antara gambar */
 }
 
 .about-images img {
-    width: 48%;
+    width: 45%;
+    /* Kecilkan ukuran gambar untuk lebih rapi */
     border-radius: 10px;
 }
 
 /* Vision section */
 .vision {
     padding: 4rem 5%;
+    display: flex;
+    /* Menggunakan flexbox untuk mengatur posisi gambar dan teks */
+    align-items: center;
+    /* Menyelaraskan gambar dan teks secara vertikal */
+    justify-content: space-between;
+    /* Menempatkan gambar dan teks di posisi yang berlawanan */
 }
 
 .vision-images {
     flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* Memastikan gambar di sebelah kiri */
+    gap: 20px;
+    /* Menambahkan jarak antara gambar */
 }
 
 .vision-images img {
-    width: 48%;
+    width: 45%;
+    /* Mengatur ukuran gambar */
     height: 280px;
     border-radius: 10px;
     object-fit: cover;
@@ -135,12 +152,16 @@ header nav ul li a:hover {
 .vision-text {
     flex: 1;
     padding-left: 2rem;
-    line-height: 1.6; /* Menambah jarak antar baris untuk keterbacaan */
+    /* Menambahkan jarak antara gambar dan teks */
+    line-height: 1.6;
+    /* Menambah jarak antar baris untuk keterbacaan */
 }
 
 .vision-text p {
-    margin-bottom: 1.5rem; /* Jarak antar paragraf */
+    margin-bottom: 1.5rem;
+    /* Jarak antar paragraf */
 }
+
 
 /* Mission section */
 .mission {
@@ -168,10 +189,13 @@ header nav ul li a:hover {
 }
 
 .mission-image img {
-    width: 80%; /* Menyesuaikan lebar gambar */
-    height: 230px; /* Menetapkan tinggi gambar untuk membuatnya persegi panjang horizontal */
+    width: 80%;
+    /* Menyesuaikan lebar gambar */
+    height: 230px;
+    /* Menetapkan tinggi gambar untuk membuatnya persegi panjang horizontal */
     border-radius: 10px;
-    object-fit: cover; /* Memastikan gambar terpotong dengan baik */
+    object-fit: cover;
+    /* Memastikan gambar terpotong dengan baik */
 }
 
 
@@ -206,7 +230,7 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.footer-section ul li a, 
+.footer-section ul li a,
 .footer-section p {
     color: #ccc;
     text-decoration: none;
@@ -233,15 +257,16 @@ footer {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .about-content, 
-    .vision, 
-    .mission, 
+
+    .about-content,
+    .vision,
+    .mission,
     .footer-content {
         flex-direction: column;
     }
 
-    .about-images, 
-    .vision-images, 
+    .about-images,
+    .vision-images,
     .mission-image {
         margin-top: 2rem;
     }
@@ -273,14 +298,14 @@ footer {
         font-size: 36px;
     }
 
-    .about-content, 
-    .vision, 
+    .about-content,
+    .vision,
     .mission {
         flex-direction: column;
     }
 
-    .about-images, 
-    .vision-images, 
+    .about-images,
+    .vision-images,
     .mission-image {
         margin-top: 2rem;
     }
@@ -312,8 +337,8 @@ footer {
         padding: 2rem 1rem;
     }
 
-    .about-content, 
-    .vision, 
+    .about-content,
+    .vision,
     .mission {
         flex-direction: column;
     }
@@ -338,6 +363,7 @@ footer {
 
 /* Media Queries untuk Layar Kecil (hp kecil) */
 @media (max-width: 480px) {
+
     /* Header */
     header {
         flex-direction: column;

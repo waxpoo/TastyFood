@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\Galeri; // Tambahkan ini
 use App\Models\Contact;
+use App\Models\Tentang;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -18,9 +19,11 @@ class HomeController extends Controller
 
     // Menampilkan halaman tentang kami
     public function tentang()
-    {
-           return view('tentang-kami');
-    }
+{
+    $tentang = Tentang::first(); // Ambil data pertama dari tabel 'tentang'
+    return view('tentang-kami', compact('tentang'));
+}
+
 
     // Menampilkan daftar berita
     public function berita()

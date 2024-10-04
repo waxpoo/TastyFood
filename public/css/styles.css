@@ -13,7 +13,9 @@ body {
     /* Menjaga konten tetap di tengah secara horizontal */
     flex-direction: column;
     align-items: center;
-    /* Menjaga konten tetap di tengah secara vertikal */
+    overflow-x: hidden; /* Sembunyikan overflow horizontal (samping kanan) */
+    overflow-y: auto;   /* Tetap biarkan scroll vertikal */
+    position: relative; /* Supaya elemen absolut di dalamnya menggunakan body sebagai referensi */
 }
 
 .container {
@@ -170,6 +172,7 @@ p {
     right: -250px;
     top: -370px;
     overflow: hidden;
+
     /* Menghilangkan bagian gambar yang melampaui kontainer */
 }
 

@@ -8,6 +8,9 @@
 
 body {
     background-color: #f4f4f4;
+    overflow-x: hidden; /* Sembunyikan overflow horizontal (samping kanan) */
+    overflow-y: auto;   /* Tetap biarkan scroll vertikal */
+    position: relative; /* Supaya elemen absolut di dalamnya menggunakan body sebagai referensi */
 }
 
 /* Header CSS */

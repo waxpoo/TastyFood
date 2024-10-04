@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +11,6 @@ Route::post('/login', [HomeController::class, 'login'])->name('login.post');
 
 // Rute yang memerlukan autentikasi
 Route::middleware('auth')->group(function () {
-    
     // Halaman Utama (hanya bisa diakses setelah login)
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -32,7 +30,9 @@ Route::middleware('auth')->group(function () {
 // Admin Routes (akses hanya untuk admin yang terautentikasi)
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
-
+    Route::get('/daftar-berita', [AdminController::class, 'daftarBerita'])->name('daftar-berita');
+    Route::get('/daftar-galeri', [AdminController::class, 'daftarGaleri'])->name('daftar-galeri');
+    
     // Formulir CRUD Berita
     Route::get('/berita/create', [AdminController::class, 'createBerita'])->name('berita.create');
     Route::post('/berita', [AdminController::class, 'storeBerita'])->name('berita.store');
@@ -47,4 +47,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::put('/galeri/{id}', [AdminController::class, 'updateGaleri'])->name('galeri.update');
     Route::delete('/galeri/{galeri}', [AdminController::class, 'destroyGaleri'])->name('galeri.destroy');
     Route::get('/galeri-kami', [AdminController::class, 'showGaleri'])->name('galeri.kami');
+
+    // Rute untuk Tentang Kami
+    Route::get('/edit-tentang', [AdminController::class, 'editTentangKami'])->name('edit-tentang');
+    Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('update-tentang');
 });
