@@ -1,0 +1,68 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212; /* Latar belakang gelap */
+    color: #ffffff; /* Warna teks putih */
+    font-family: 'Arial', sans-serif; /* Jenis font */
+}
+
+/* Container Styling */
+.container {
+    max-width: 800px;
+    margin: 50px auto; /* Pusatkan kontainer */
+    padding: 20px;
+    background-color: #1e1e1e; /* Warna latar belakang kontainer */
+    border-radius: 8px; /* Sudut membulat */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Bayangan */
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2.5rem; /* Ukuran font heading */
+    margin-bottom: 20px; /* Jarak bawah */
+    text-align: center; /* Rata tengah */
+    color: #ffae00; /* Warna teks heading */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px; /* Jarak bawah antar elemen */
+}
+
+/* Label Styling */
+label {
+    font-size: 1.2rem; /* Ukuran font label */
+    margin-bottom: 8px; /* Jarak bawah label */
+    display: block; /* Membuat label menjadi block */
+}
+
+/* Input File Styling */
+input[type="file"] {
+    display: block; /* Membuat input file menjadi block */
+    width: 100%; /* Lebar penuh */
+    padding: 10px; /* Padding */
+    border: 2px solid #ffae00; /* Border */
+    border-radius: 4px; /* Sudut membulat */
+    background-color: #2a2a2a; /* Latar belakang input */
+    color: #ffffff; /* Warna teks input */
+}
+
+/* Button Styling */
+.btn {
+    background-color: #ffae00; /* Warna latar belakang tombol */
+    color: #ffffff; /* Warna teks tombol */
+    padding: 10px 15px; /* Padding */
+    border: none; /* Hapus border */
+    border-radius: 4px; /* Sudut membulat */
+    cursor: pointer; /* Pointer saat hover */
+    transition: background-color 0.3s ease; /* Efek transisi */
+}
+
+.btn:hover {
+    background-color: #ffae00; /* Warna saat hover */
+}

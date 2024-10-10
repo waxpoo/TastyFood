@@ -51,6 +51,12 @@
         @endforeach
     </div>
 
+<div class="pagination-controls">
+    <button id="prevPage">&lt;</button>
+    <span id="pageIndicator">1</span>
+    <button id="nextPage">&gt;</button>
+</div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -146,6 +152,49 @@
 
         showImage(currentIndex, 'next'); // Tampilkan gambar pertama dengan transisi ke kanan
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const itemsPerPage = 12;
+        const galleryItems2 = document.querySelectorAll('.gallery-container2 .gallery-item2');
+        const totalItems2 = galleryItems2.length;
+        const totalPages2 = Math.ceil(totalItems2 / itemsPerPage);
+        let currentPage2 = 1;
+
+        function showPage2(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            // Sembunyikan semua item
+            galleryItems2.forEach((item, index) => {
+                item.style.display = (index >= start && index < end) ? 'block' : 'none';
+            });
+
+            // Update page indicator
+            document.getElementById('pageIndicator').textContent = page;
+        }
+
+        // Fungsi untuk pindah ke halaman sebelumnya
+        document.getElementById('prevPage').addEventListener('click', function () {
+            if (currentPage2 > 1) {
+                currentPage2--;
+                showPage2(currentPage2);
+            }
+        });
+
+        // Fungsi untuk pindah ke halaman berikutnya
+        document.getElementById('nextPage').addEventListener('click', function () {
+            if (currentPage2 < totalPages2) {
+                currentPage2++;
+                showPage2(currentPage2);
+            }
+        });
+
+        // Tampilkan halaman pertama saat pertama kali load
+        showPage2(currentPage2);
+    });
+</script>
+    
 </body>
 
 </html>

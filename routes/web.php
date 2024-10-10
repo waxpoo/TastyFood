@@ -34,8 +34,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/daftar-berita', [AdminController::class, 'daftarBerita'])->name('daftar-berita');
     Route::get('/daftar-galeri', [AdminController::class, 'daftarGaleri'])->name('daftar-galeri');
-    Route::get('/create-map', [AdminController::class, 'create'])->name('create.map');
-
 
     // Formulir CRUD Berita
     Route::get('/berita/create', [AdminController::class, 'createBerita'])->name('berita.create');
@@ -56,7 +54,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/edit-tentang', [AdminController::class, 'editTentangKami'])->name('edit-tentang');
     Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('update-tentang');
 
-    // Rute untuk Mappss
+    // Rute untuk Maps
     Route::get('/edit-map', [AdminController::class, 'editMap'])->name('edit.map');
     Route::post('/update-map', [AdminController::class, 'updateMap'])->name('update.map');
 });
+
+

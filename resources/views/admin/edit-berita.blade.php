@@ -29,7 +29,6 @@
 
                 <label for="gambar">Gambar:</label>
                 <input type="file" id="gambar" name="gambar" accept="image/*">
-                <p>Gambar saat ini: <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" width="100"></p>
 
                 <button type="submit" class="btn">Perbarui Berita</button>
             </form>

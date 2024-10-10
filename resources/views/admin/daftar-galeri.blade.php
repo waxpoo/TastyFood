@@ -16,16 +16,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Gambar</th>
+                    <th>ID</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($allGaleri as $galeri)
                     <tr>
-                        <td>
-                            <img src="{{ asset('storage/' . $galeri->gambar) }}" alt="Gambar Galeri" style="width: 150px; height: auto;">
-                        </td>
+                        <td>{{ $galeri->id }}</td>
                         <td>
                             <a href="{{ route('galeri.edit', $galeri->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('galeri.destroy', $galeri->id) }}" method="POST" style="display:inline;">

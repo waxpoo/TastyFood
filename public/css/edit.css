@@ -2,121 +2,89 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #121212; /* Warna latar belakang gelap */
+    color: #f5f5f5; /* Warna teks terang */
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 header {
-    background-color: #3498db;
-    color: white;
-    padding: 15px;
+    background-color: #1e1e1e; /* Warna latar belakang header */
+    padding: 20px;
     text-align: center;
-    width: 100%;
 }
 
 .header-content h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 2.5em;
 }
 
 .header-content .btn {
-    text-decoration: none;
-    color: white;
-    background-color: #2980b9;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-top: 10px;
     display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff5722; /* Warna tombol */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .header-content .btn:hover {
-    background-color: #1e6a97;
+    background-color: #e64a19; /* Warna tombol saat hover */
 }
 
 main {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+    padding: 20px;
 }
 
 section {
-    margin-top: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
+    background-color: #2c2c2c; /* Warna latar belakang section */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Bayangan untuk tampilan lebih dalam */
 }
 
 label {
-    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
 }
 
 input[type="text"],
 textarea,
 input[type="file"] {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border: 1px solid #444; /* Warna border */
     border-radius: 5px;
-    margin-bottom: 15px;
-    font-size: 14px;
+    background-color: #1e1e1e; /* Warna latar belakang input */
+    color: #f5f5f5; /* Warna teks input */
 }
 
-textarea {
-    resize: vertical;
-}
-
-input[type="file"] {
-    border: none;
-}
-
-img {
-    margin-bottom: 10px;
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #ff5722; /* Warna border saat fokus */
+    outline: none;
 }
 
 button {
-    background-color: #3498db;
+    padding: 10px 15px;
+    background-color: #ff5722; /* Warna tombol */
     color: white;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #e64a19; /* Warna tombol saat hover */
 }
 
-p {
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #666;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    main {
-        padding: 20px;
-    }
-
-    button {
-        font-size: 14px;
-    }
-
-    .header-content h1 {
-        font-size: 20px;
-    }
+/* Gaya gambar */
+img {
+    border-radius: 5px;
+    margin-top: 10px;
 }

@@ -282,6 +282,80 @@ footer {
 .social-icons {
     margin-top: 1rem;
 }
+/* Responsive untuk Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    header {
+        padding: 20px 30px;
+    }
+
+    .hero img {
+        height: 400px;
+    }
+
+    .hero .hero-text {
+        font-size: 36px;
+        left: 50%;
+    }
+
+    .main-article {
+        padding: 30px;
+    }
+
+    .main-article img {
+        height: 300px;
+    }
+
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-card img {
+        height: 150px;
+    }
+}
+
+/* Responsive untuk Handphone (max-width: 768px) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .hero img {
+        height: 300px;
+    }
+
+    .hero .hero-text {
+        font-size: 28px;
+        left: 50%;
+    }
+
+    .main-article {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .main-article img {
+        height: auto;
+    }
+
+    .other-articles h3 {
+        padding-left: 0;
+    }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-card img {
+        height: 120px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
 
 .social-icons a {
     margin-right: 0.5rem;
@@ -293,3 +367,4 @@ footer {
     padding-top: 1rem;
     border-top: 1px solid #555;
 }
+

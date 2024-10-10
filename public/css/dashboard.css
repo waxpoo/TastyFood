@@ -2,6 +2,7 @@
 body, h1, h2, h3, p {
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif; /* Font elegan */
 }
 
 /* Wrapper for the sidebar and main content */
@@ -13,12 +14,18 @@ body, h1, h2, h3, p {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background: #2c3e50;
-    color: #ecf0f1;
+    background: #000; /* Hitam */
+    color: #ecf0f1; /* Teks putih */
     padding: 20px;
     position: fixed;
     top: 0;
-    left: -20px;
+    left: -250px; /* Mulai di luar layar */
+    transition: left 0.3s ease; /* Transisi yang halus */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Tambahkan bayangan untuk efek kedalaman */
+}
+
+.sidebar.active {
+    left: 0; /* Kembalikan ke tampilan */
 }
 
 .sidebar h2 {
@@ -26,6 +33,7 @@ body, h1, h2, h3, p {
     margin-bottom: 20px;
 }
 
+/* Sidebar list styles */
 .sidebar ul {
     list-style-type: none;
     padding: 0;
@@ -39,29 +47,54 @@ body, h1, h2, h3, p {
     color: #ecf0f1;
     text-decoration: none;
     font-size: 1.1em;
+    padding: 10px 15px; /* Tambahkan padding untuk tampilan yang lebih baik */
+    border-radius: 5px; /* Sudut melengkung untuk link */
+    transition: background 0.3s; /* Efek transisi */
 }
 
 .sidebar ul li a:hover {
-    text-decoration: underline;
+    background: #e67e22; /* Oranye gelap saat hover */
 }
 
 /* Main content styles */
 .main-content {
-    margin-left: 250px;
+    margin-left: 0; /* Mulai tanpa margin */
     padding: 20px;
-    width: calc(100% - 250px);
+    width: 100%;
+    transition: margin-left 0.3s ease; /* Transisi yang halus */
+}
+
+.sidebar.active + .main-content {
+    margin-left: 250px; /* Tambahkan margin saat sidebar aktif */
 }
 
 /* Header styles */
 header {
-    background: #34495e;
+    background: #34495e; /* Warna gelap untuk header */
     color: #ecf0f1;
     padding: 10px 20px;
     border-bottom: 1px solid #2c3e50;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek kedalaman */
 }
 
 header h1 {
     margin: 0;
+}
+
+/* Toggle button styles */
+.toggle-btn {
+    background: #e67e22; /* Oranye gelap untuk tombol */
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 15px; /* Tambahkan padding untuk tampilan yang lebih baik */
+    border-radius: 5px; /* Sudut melengkung untuk tombol */
+    transition: background 0.3s; /* Efek transisi */
+}
+
+.toggle-btn:hover {
+    background: #d35400; /* Warna saat hover */
 }
 
 /* Dashboard cards styles */
@@ -72,88 +105,27 @@ header h1 {
 }
 
 .card {
-    background: #3498db;
+    background: #2c3e50; /* Warna gelap untuk kartu */
     color: #ecf0f1;
     padding: 20px;
-    border-radius: 8px;
-    flex: 1;
-    text-align: center;
+    border-radius: 5px; /* Sudut melengkung untuk kartu */
+    flex: 1; /* Kartu akan mengisi ruang yang tersedia */
 }
 
-/* Table styles */
-.all-articles table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.card h3 {
+    margin-bottom: 10px;
 }
 
-.all-articles table th, .all-articles table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+/* Styles for the table in Daftar Galeri */
+table {
+    width: 100%; /* Memastikan tabel memenuhi lebar kontainer */
 }
 
-.all-articles table th {
-    background: #2c3e50;
-    color: #ecf0f1;
+td {
+    vertical-align: middle; /* Menyelaraskan konten di tengah */
 }
 
-.all-articles table td {
-    background: #fff;
-}
-
-/* Daftar Galeri */
-.all-galleries {
-    margin-top: 40px; /* Jarak antara daftar berita dan daftar galeri */
-}
-
-.all-galleries table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.all-galleries table th, .all-galleries table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.all-galleries table th {
-    background: #2c3e50;
-    color: #ecf0f1;
-}
-
-.all-galleries table td {
-    background: #fff;
-}
-
-.all-galleries img {
-    max-width: 100px;
-    height: auto;
-}
-
-/* Action buttons styles */
-.action-buttons .btn {
-    margin-right: 5px;
-}
-
-/* Button styles */
+/* Ensure consistent padding for buttons */
 .btn {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 5px;
-    background: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    background: #2980b9;
-}
-
-.btn-danger {
-    background: #e74c3c;
-}
-
-.btn-danger:hover {
-    background: #c0392b;
+    padding: 8px 12px; /* Padding seragam untuk tombol */
 }

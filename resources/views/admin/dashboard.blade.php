@@ -15,6 +15,11 @@
                 form.submit();
             }
         }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
     </script>
 </head>
 
@@ -40,11 +45,11 @@
             </form>
         </nav>
 
-        <!-- Main Content -->
         <div class="main-content">
             <header>
                 <div class="header-content">
                     <h1>Dashboard Admin</h1>
+                    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
                     <a href="{{ route('home') }}" class="btn">Kembali ke Halaman Utama</a>
                     <a href="{{ route('daftar-berita') }}" class="btn">Daftar Berita</a>
                     <a href="{{ route('daftar-galeri') }}" class="btn">Daftar Galeri</a>
@@ -71,7 +76,6 @@
 
                 <!-- Sertakan Daftar Galeri -->
                 @include('admin.daftar-galeri')
-
             </main>
         </div>
     </div>

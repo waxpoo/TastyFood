@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('imm3.jpg') no-repeat center center fixed;
+    background: url('/backback.jpg') no-repeat center center fixed; /* Ganti dengan gambar makanan */
     background-size: cover; 
     display: flex;
     justify-content: center;
@@ -8,8 +8,9 @@ body {
     height: 100vh;
     margin: 0;
 }
+
 .container {
-    background: #fff;
+    background-color: rgba(255, 255, 255, 0.85); /* Warna transparan untuk kontras dengan gambar latar belakang */
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -17,26 +18,30 @@ body {
     width: 100%;
     text-align: center;
     border: 1px solid #ddd;
+    backdrop-filter: blur(10px); /* Menambah efek blur */
 }
+
 h2 {
     margin-bottom: 1.5rem;
-    color: #333;
-    font-size: 1.75rem;
-    font-weight: 600;
+    color: #D35400; /* Warna oranye untuk tema makanan */
+    font-size: 2rem;
+    font-weight: 700;
 }
+
 .form-group {
     margin-bottom: 1.25rem;
     text-align: left;
 }
+
 .form-group label {
     display: block;
     margin-bottom: .5rem;
-    font-weight: 500;
-    color: #555;
+    font-weight: 600;
+    color: #8e44ad; /* Ungu lembut untuk kontras dengan warna makanan */
     font-size: 0.875rem;
 }
-.form-group input,
-.form-group select {
+
+.form-group input {
     width: 100%;
     padding: 0.75rem;
     border: 2px solid #ccc;
@@ -44,29 +49,46 @@ h2 {
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #6d83f2;
-    box-shadow: 0 0 8px rgba(109, 131, 242, 0.3);
+
+.form-group input:focus {
+    border-color: #e67e22; /* Warna oranye hangat */
+    box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
     outline: none;
 }
+
 .btn-primary {
-    background-color: #6d83f2;
+    background-color: #e67e22; /* Warna oranye untuk tombol */
     color: #fff;
     border: none;
     padding: 0.75rem;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.125rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: background-color 0.3s, transform 0.3s;
     width: 100%;
 }
+
 .btn-primary:hover {
-    background-color: #4b6fc7;
+    background-color: #d35400; /* Warna oranye yang lebih gelap saat di-hover */
     transform: translateY(-2px);
 }
+
 .btn-primary:active {
-    background-color: #3a5dbb;
+    background-color: #c0392b; /* Warna merah gelap saat ditekan */
     transform: translateY(1px);
+}
+
+.login-link {
+    margin-top: 1.5rem;
+}
+
+.login-link a {
+    color: #8e44ad; /* Warna ungu lembut untuk link register */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }

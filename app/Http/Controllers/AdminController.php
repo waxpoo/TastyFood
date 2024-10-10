@@ -44,61 +44,76 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Data tentang berhasil diperbarui.');
     }
+// FUNGSI BERITA
 
-    // FUNGSI BERITA
-    public function createBerita()
-    {
-        return view('admin.create-berita');
+public function createBerita()
+{
+    return view('admin.create-berita');
+}
+
+public function daftarBerita()
+{
+    $allBerita = Berita::all();
+    return view('admin.daftar-berita', compact('allBerita'));
+}
+
+public function storeBerita(Request $request)
+{
+    $validated = $request->validate([
+        'judul' => 'required|string|max:255',
+        'isi' => 'required|string',
+        'gambar' => 'nullable|image|max:5048',
+    ]);
+
+    if ($request->hasFile('gambar')) {
+        $imagePath = $request->file('gambar')->store('public/gambar');
+        $validated['gambar'] = basename($imagePath);
     }
 
-    public function daftarBerita()
-    {
-        $allBerita = Berita::all();
-        return view('admin.daftar-berita', compact('allBerita'));
-    }
-    public function storeBerita(Request $request)
-    {
-        $validated = $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'gambar' => 'nullable|image|max:2048', // Gambar sekarang bisa berupa file gambar apa saja
-        ]);
+    Berita::create($validated);
 
-        if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('public/gambar');
-            $validated['gambar'] = basename($imagePath);
-        }
+    return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil ditambahkan.');
+}
 
-        Berita::create($validated);
+// Metode untuk menampilkan halaman edit
+public function editBerita($id)
+{
+    // Cari berita berdasarkan ID
+    $berita = Berita::findOrFail($id);
+    
+    // Tampilkan halaman edit dengan data berita
+    return view('admin.edit-berita', compact('berita'));
+}
 
-        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil ditambahkan.');
-    }
-    public function updateBerita(Request $request, Berita $berita)
-    {
-        $validated = $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'gambar' => 'nullable|image|max:2048', // Gambar sekarang bisa berupa file gambar apa saja
-        ]);
+// Metode untuk memperbarui berita
+public function updateBerita(Request $request, $id)
+{
+    $berita = Berita::findOrFail($id);
 
-        if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('public/gambar');
-            $validated['gambar'] = basename($imagePath);
-        } else {
-            $validated['gambar'] = $berita->gambar; // Tetap gunakan gambar yang ada jika tidak ada gambar baru
-        }
+    $validated = $request->validate([
+        'judul' => 'required|string|max:255',
+        'isi' => 'required|string',
+        'gambar' => 'nullable|image|max:5048',
+    ]);
 
-        $berita->update($validated);
-
-        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diperbarui.');
+    if ($request->hasFile('gambar')) {
+        $imagePath = $request->file('gambar')->store('public/gambar');
+        $validated['gambar'] = basename($imagePath);
+    } else {
+        $validated['gambar'] = $berita->gambar; // Tetap gunakan gambar yang ada jika tidak ada gambar baru
     }
 
+    $berita->update($validated);
 
-    public function destroyBerita(Berita $berita)
-    {
-        $berita->delete();
-        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
-    }
+    return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diperbarui.');
+}
+
+public function destroyBerita(Berita $berita)
+{
+    $berita->delete();
+    return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
+}
+
 
     // FUNGSI GALERI
     public function createGaleri()
@@ -143,7 +158,7 @@ class AdminController extends Controller
         $galeriItem = Galeri::findOrFail($id);
 
         $validated = $request->validate([
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
         ]);
 
         if ($request->hasFile('gambar')) {

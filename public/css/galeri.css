@@ -281,6 +281,29 @@ header nav ul li a:hover {
     background-color: #ff6347;
 }
 
+.pagination-controls {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination-controls button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination-controls button:hover {
+    background-color: #555;
+}
+
+#pageIndicator {
+    margin: 0 15px;
+    font-size: 18px;
+    color: #333;
+}
+
 /* Footer Styles */
 footer {
     background-color: #000000;
@@ -330,4 +353,74 @@ footer {
     text-align: center;
     padding-top: 1rem;
     border-top: 1px solid #555;
+}
+
+/* Responsive untuk Tablet (iPad) */
+@media (max-width: 1024px) {
+    header {
+        padding: 20px 30px;
+    }
+
+    .hero img {
+        height: 400px;
+    }
+
+    .hero .hero-text {
+        font-size: 36px;
+        left: 50%;
+    }
+
+    .gallery-container2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item2 {
+        height: 220px;
+    }
+
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-card img {
+        height: 150px;
+    }
+}
+
+/* Responsive untuk Handphone */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .hero img {
+        height: 300px;
+    }
+
+    .hero .hero-text {
+        font-size: 28px;
+        left: 50%;
+    }
+
+    .gallery-container2 {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item2 {
+        height: 180px;
+    }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-card img {
+        height: 120px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
 }

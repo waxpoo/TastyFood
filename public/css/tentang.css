@@ -78,7 +78,11 @@ header nav ul li a:hover {
     margin-bottom: 2rem;
 }
 
-.about h2,
+.about h2 {
+
+    margin-top: 20px;
+}
+
 .vision h2,
 .mission h2 {
     font-size: 2rem;
@@ -250,8 +254,6 @@ footer {
     padding-top: 1rem;
     border-top: 1px solid #555;
 }
-
-
 
 
 
