@@ -52,9 +52,9 @@
                 @foreach ($berita as $item)
                     <div class="article-card">
                         @if ($item->gambar)
-                            <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="{{ $item->gambar }}">
+                            <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="Gambar {{ $item->judul }}">
                         @else
-                            <img src="{{ asset('images/....') }}" alt="Gambar Default">
+                            <img src="{{ asset('images/default-image.jpg') }}" alt="Gambar Default">
                         @endif
                         <div class="article-content">
                             <h4>{{ $item->judul }}</h4>
@@ -64,6 +64,10 @@
                     </div>
                 @endforeach
             </div>
+            
+            
+
+            
         </section>
     </main>
 
