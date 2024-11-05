@@ -110,6 +110,11 @@ header h1 {
     padding: 20px;
     border-radius: 5px; /* Sudut melengkung untuk kartu */
     flex: 1; /* Kartu akan mengisi ruang yang tersedia */
+    transition: transform 0.3s; /* Transisi saat hover */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efek angkat saat hover */
 }
 
 .card h3 {
@@ -119,13 +124,25 @@ header h1 {
 /* Styles for the table in Daftar Galeri */
 table {
     width: 100%; /* Memastikan tabel memenuhi lebar kontainer */
+    border-collapse: collapse; /* Menghilangkan ruang antara sel */
 }
 
 td {
     vertical-align: middle; /* Menyelaraskan konten di tengah */
+    padding: 10px; /* Tambahkan padding untuk sel */
+    border: 1px solid #bdc3c7; /* Garis batas sel */
 }
 
 /* Ensure consistent padding for buttons */
 .btn {
     padding: 8px 12px; /* Padding seragam untuk tombol */
+    background: #e67e22; /* Warna tombol */
+    color: #fff; /* Teks tombol putih */
+    border: none; /* Menghilangkan batas */
+    border-radius: 5px; /* Sudut melengkung untuk tombol */
+    transition: background 0.3s; /* Efek transisi */
+}
+
+.btn:hover {
+    background: #d35400; /* Warna tombol saat hover */
 }

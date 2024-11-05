@@ -1,0 +1,129 @@
+/* Umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang lebih modern */
+    background-color: #f4f7fa; /* Warna latar belakang lembut */
+    margin: 0; /* Menghapus margin default */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #000; /* Hitam */
+    color: #ecf0f1; /* Teks putih */
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Mulai di luar layar */
+    transition: left 0.3s ease; /* Transisi yang halus */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Tambahkan bayangan untuk efek kedalaman */
+}
+
+.sidebar.active {
+    left: 0; /* Kembalikan ke tampilan */
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* Sidebar list styles */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px; /* Tambahkan padding untuk tampilan yang lebih baik */
+    border-radius: 5px; /* Sudut melengkung untuk link */
+    transition: background 0.3s; /* Efek transisi */
+}
+
+.sidebar ul li a:hover {
+    background: #e67e22; /* Oranye gelap saat hover */
+}
+
+/* Link Navigasi */
+.nav-link {
+    color: #ffffff; /* Warna teks link */
+    padding: 15px 20px; /* Padding link */
+    border-radius: 5px; /* Sudut melengkung */
+    transition: background-color 0.3s, color 0.3s; /* Transisi untuk hover */
+    margin: 5px 0; /* Jarak antar link */
+}
+
+.nav-link:hover {
+    background-color: #e67e22; /* Warna latar belakang saat hover */
+    color: #ffffff; /* Warna teks saat hover */
+}
+
+.nav-item.active .nav-link {
+    background-color: #e67e22; /* Warna latar belakang untuk link aktif */
+    color: #ffffff; /* Warna teks untuk link aktif */
+}
+
+/* Konten Utama */
+.main {
+    margin-left: 250px; /* Menghindari sidebar */
+    padding: 30px; /* Ruang dalam konten utama */
+    background-color: #ffffff; /* Warna latar belakang konten utama */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+    transition: margin-left 0.3s ease; /* Transisi saat sidebar beralih */
+}
+
+h2, h3, h4 {
+    color: #343a40; /* Warna teks untuk heading */
+    font-weight: 600; /* Berat font untuk heading */
+}
+
+/* Gaya untuk tombol */
+.btn-custom {
+    background-color: #28a745; /* Warna tombol */
+    color: #ffffff; /* Warna teks tombol */
+    padding: 10px 20px; /* Padding tombol */
+    border-radius: 5px; /* Sudut melengkung tombol */
+    transition: background-color 0.3s; /* Transisi untuk tombol */
+    border: none; /* Menghapus border */
+}
+
+.btn-custom:hover {
+    background-color: #218838; /* Warna tombol saat hover */
+}
+
+/* Gaya untuk Form */
+.form-group {
+    margin-bottom: 20px; /* Jarak antar form group */
+}
+
+/* Input dan Select */
+.form-control, .form-select {
+    border-radius: 5px; /* Sudut melengkung untuk input */
+    padding: 10px; /* Ruang dalam input */
+    border: 1px solid #ced4da; /* Border input */
+}
+
+/* Efek fokus untuk input */
+.form-control:focus, .form-select:focus {
+    border-color: #e67e22; /* Warna border saat fokus */
+    box-shadow: 0 0 5px rgba(250, 136, 14, 0.853); /* Bayangan saat fokus */
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Menyembunyikan sidebar di layar kecil */
+    }
+    .main {
+        margin-left: 0; /* Mengatur margin untuk konten utama */
+        padding: 10px; /* Mengurangi ruang dalam konten utama */
+    }
+}

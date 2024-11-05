@@ -9,6 +9,69 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .popup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Background semi-transparan */
+            z-index: 1000; /* Memastikan popup berada di atas elemen lain */
+        }
+
+        .popup-content {
+            background-color: #fff; /* Warna latar belakang popup */
+            border-radius: 10px; /* Sudut melengkung */
+            padding: 20px;
+            text-align: center; /* Teks terpusat */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
+            width: 300px; /* Lebar popup */
+        }
+
+        .popup h2 {
+            margin-bottom: 10px; /* Jarak bawah untuk heading */
+        }
+
+        .popup p {
+            margin-bottom: 20px; /* Jarak bawah untuk teks */
+        }
+
+        .popup button {
+            background-color: #f76c6c; /* Warna tombol */
+            color: #fff; /* Warna teks tombol */
+            border: none;
+            border-radius: 5px; /* Sudut tombol melengkung */
+            padding: 10px 15px; /* Padding tombol */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Transisi warna tombol */
+        }
+
+        .popup button:hover {
+            background-color: #e65c5c; /* Warna tombol saat hover */
+        }
+
+        .checkmark {
+            width: 50px; /* Sesuaikan ukuran sesuai kebutuhan */
+            animation: fadeIn 0.5s ease-in-out; /* Animasi muncul */
+            margin-bottom: 15px; /* Jarak bawah untuk gambar centang */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8); /* Mulai dari ukuran kecil */
+            }
+            to {
+                opacity: 1;
+                transform: scale(1); /* Ukuran penuh */
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,12 +99,15 @@
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
-            @elseif (session('error'))
+            @endif
+
+            @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
             @endif
-            <form action="/kontak" method="POST">
+
+            <form id="contactForm" action="{{ route('kontak.store') }}" method="POST">
                 @csrf
                 <div class="form-left">
                     <div class="form-group">
@@ -59,65 +125,59 @@
                         <textarea id="message" name="message" placeholder="Message" required></textarea>
                     </div>
                 </div>
-                <button type="submit">KIRIM</button>
+                <button type="submit" onclick="showPopup(event)">KIRIM</button>
             </form>
-        </section>
-        <section class="contact-info">
-            <div class="info-item">
-                <div class="info-item-content">
-                    <img src="email.png" alt="Email Icon" class="icon-image">
-                    <h4>EMAIL</h4>
-                    <p>tastyfood@gmail.com</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-item-content">
-                    <img src="telephone.png" alt="Phone Icon" class="icon-image">
-                    <h4>PHONE</h4>
-                    <p>+62 812 3456 7890</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-item-content">
-                    <img src="lokasi.png" alt="Location Icon" class="icon-image">
-                    <h4>LOCATION</h4>
-                    <p>Kota Bandung, Jawa Barat</p>
+
+            <!-- Popup Konfirmasi -->
+            <div class="popup" id="popup" style="display: none;">
+                <div class="popup-content">
+                    <img src="{{ asset('checkmark.png') }}" alt="Centang" class="checkmark" id="checkmark" style="display: none;">
+                    <h2>Konfirmasi</h2>
+                    <p>Apakah Anda yakin ingin mengirim pesan?</p>
+                    <button onclick="confirmSubmit()">Ya, Kirim</button>
+                    <button class="close" onclick="hidePopup()">Batal</button>
                 </div>
             </div>
         </section>
-        @php
-        // Ambil peta berdasarkan ID yang sesuai
-        $map = App\Models\Map::first(); // Pastikan ini sesuai dengan ID peta yang ingin ditampilkan
-    @endphp
-    
-    <section class="map" style="text-align: center; margin: 20px 0;">
-        @if ($map && $map->latitude && $map->longitude) 
-            <div id="map" style="width: 80%; height: 450px; margin: 0 auto;"></div> 
-            
-            <script>
-                // Inisialisasi peta dengan koordinat dari database
-                var map = L.map('map').setView([{{ $map->latitude }}, {{ $map->longitude }}], 13); 
-    
-                // Menambahkan layer peta dari OpenStreetMap
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                }).addTo(map);
-    
-                // Menambahkan marker di peta
-                L.marker([{{ $map->latitude }}, {{ $map->longitude }}]).addTo(map)
-                    .bindPopup('Lokasi: Kota Bandung, Jawa Barat'); 
-            </script>
-            
-            <!-- Menampilkan gambar -->
-            @if ($map->image) <!-- Pastikan ada data gambar -->
-                <img src="{{ asset('storage/' . $map->image) }}" alt="Peta Lokasi" style="width: 100%; margin-top: 20px;"/>
-            @endif
-            
-        @else
-            <p>Data peta tidak tersedia atau koordinat tidak valid.</p> 
-        @endif
-    </section>
-        
+
+        <section class="kontak-kami-content">
+            <div class="container">
+                @if (session('success'))
+                    <div class="alert alert-success mt-3">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <div class="contact-info">
+                    <div>
+                        <img src="{{ asset('email.png') }}" alt="Email Icon" class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                        <h3>EMAIL</h3>
+                        <p>{{ $contact->email }}</p>
+                    </div>
+                    <div>
+                        <img src="{{ asset('telephone.png') }}" alt="Phone Icon" class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                        <h3>TELEPON</h3>
+                        <p>{{ $contact->phone }}</p>
+                    </div>
+                    <div>
+                        <img src="{{ asset('lokasi.png') }}" alt="Location Icon" class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>LOKASI</h3>
+                        <p>{{ $contact->location }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-container">
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed/v1/place?q={{ urlencode($contact->location) }}&key=AIzaSyCtQ8aYQTRFo4aCLv5n2O5L5RI_KcBGY0Y"
+                    allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </section>
 
         <footer>
             <div class="footer-content">
@@ -162,5 +222,25 @@
         </footer>
     </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+
+<script>
+    function showPopup(event) {
+        event.preventDefault(); // Mencegah pengiriman formulir
+        document.getElementById('popup').style.display = 'flex'; // Tampilkan popup
+    }
+
+    function hidePopup() {
+        document.getElementById('popup').style.display = 'none'; // Sembunyikan popup
+    }
+
+    function confirmSubmit() {
+        document.getElementById('checkmark').style.display = 'block'; // Tampilkan gambar centang
+        setTimeout(function() {
+            document.getElementById('contactForm').submit(); // Kirim formulir setelah 1 detik
+        }, 1000); // Waktu delay sebelum mengirim formulir
+    }
+</script>
 
 </html>

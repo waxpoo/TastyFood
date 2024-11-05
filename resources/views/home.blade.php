@@ -17,7 +17,7 @@
         <div class="container-header">
             <div class="logo">TASTY FOOD</div>
             <nav>
-                <a href="home">Home</a>
+                <a href="http://127.0.0.1:8000">Home</a>
                 <a href="tentang-kami">Tentang</a>
                 <a href="berita-kami">Berita</a>
                 <a href="galeri-kami">Galeri</a>
@@ -170,7 +170,7 @@
                     </div>
                 </div>
                 <div class="gallery-button">
-                    <a href="galeri-kami" class="btn">galeri kami</a>
+                    <a href="galeri-kami" class="btn">LIHAT LEBIH BANYAK</a>
                 </div>
             </div>
         </section>

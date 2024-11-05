@@ -113,7 +113,7 @@ textarea:focus {
 }
 
 button {
-    background-color: #28a745;
+    background-color: #e67e22;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -123,7 +123,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #ff9d00;
 }
 
 /* Responsive Styling */

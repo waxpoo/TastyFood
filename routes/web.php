@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactInfoController;
 use Illuminate\Support\Facades\Route;
 
 // Formulir Registrasi dan Login (tidak memerlukan login)
@@ -54,9 +55,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/edit-tentang', [AdminController::class, 'editTentangKami'])->name('edit-tentang');
     Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('update-tentang');
 
-    // Rute untuk Maps
-    Route::get('/edit-map', [AdminController::class, 'editMap'])->name('edit.map');
-    Route::post('/update-map', [AdminController::class, 'updateMap'])->name('update.map');
+    // Tambahkan di dalam grup admin
+    Route::get('/edit-kontak', [ContactInfoController::class, 'edit'])->name('edit.kontak');
+    Route::put('/update-kontak', [ContactInfoController::class, 'update'])->name('contact-info.update');
 });
-
-
+Route::get('/partials/{modal}', function ($modal) {
+    return view("partials.$modal");
+});

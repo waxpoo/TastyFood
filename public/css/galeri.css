@@ -29,7 +29,7 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
-    
+
 }
 
 header nav ul {
@@ -88,10 +88,10 @@ header nav ul li a:hover {
     /* Mengatur ketinggian minimum agar gambar lebih proporsional di halaman */
 
 }.gallery-item {
-    width: 90%; 
-    max-width: 1200px;  
+    width: 90%;
+    max-width: 1200px;
     position: relative;
-    height: 500px;  
+    height: 500px;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -280,23 +280,12 @@ header nav ul li a:hover {
 .article-content .btn:hover {
     background-color: #ff6347;
 }
-
 .pagination-controls {
-    text-align: center;
-    margin: 20px 0;
+    display: flex;
+    justify-content: center; /* Memusatkan elemen secara horizontal */
+    margin-top: 20px; /* Memberikan jarak di atas pagination */
 }
 
-.pagination-controls button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.pagination-controls button:hover {
-    background-color: #555;
-}
 
 #pageIndicator {
     margin: 0 15px;

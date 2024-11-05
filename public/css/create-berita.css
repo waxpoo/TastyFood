@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Mengatur gaya umum untuk body */
+/* Gaya Umum */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -13,7 +13,7 @@ body {
     padding: 20px;
 }
 
-/* Gaya untuk header */
+/* Gaya untuk Header */
 header {
     background-color: #000;
     color: #fff;
@@ -44,17 +44,16 @@ header {
     background-color: #e58326;
 }
 
-/* Gaya untuk main */
+/* Gaya untuk Main */
 main {
     max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
-/* Gaya untuk formulir */
+/* Gaya untuk Formulir */
 form {
     display: flex;
     flex-direction: column;
@@ -82,7 +81,7 @@ form textarea:focus {
 }
 
 form button.btn {
-    background-color: #000;
+    background-color: #e67e22;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -93,10 +92,10 @@ form button.btn {
 }
 
 form button.btn:hover {
-    background-color: #333;
+    background-color: #ff6f00;
 }
 
-/* Gaya untuk tombol khusus dengan warna merah */
+/* Gaya untuk Tombol Khusus */
 form button.btn-danger {
     background-color: #ff0800;
 }
@@ -105,7 +104,7 @@ form button.btn-danger:hover {
     background-color: #c9302c;
 }
 
-/* Gaya untuk tampilan artikel */
+/* Gaya untuk Tampilan Artikel */
 .article-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -113,11 +112,10 @@ form button.btn-danger:hover {
 }
 
 .article-card {
-    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .article-card img {
@@ -137,7 +135,7 @@ form button.btn-danger:hover {
     margin-bottom: 15px;
 }
 
-/* Gaya untuk tombol edit dan hapus pada daftar berita */
+/* Gaya untuk Tombol Edit dan Hapus */
 .action-buttons {
     display: flex;
     gap: 10px;
@@ -169,7 +167,7 @@ form button.btn-danger:hover {
     background-color: #c9302c;
 }
 
-/* Gaya untuk pagination jika ada */
+/* Gaya untuk Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -189,4 +187,29 @@ form button.btn-danger:hover {
 
 .pagination a:hover {
     background-color: #e58326;
+}
+
+/* Gaya untuk Popup */
+.popup {
+    display: none; /* Sembunyikan popup secara default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+    justify-content: center; /* Center secara horizontal */
+    align-items: center; /* Center secara vertikal */
+    z-index: 1000; /* Pastikan popup di atas elemen lain */
+}
+
+.popup-content {
+    background-color: #fff; /* Latar belakang putih */
+    padding: 20px;
+    border-radius: 8px; /* Sudut melengkung */
+    text-align: center; /* Center teks */
+}
+
+.btn {
+    margin-top: 10px; /* Margin atas untuk tombol */
 }

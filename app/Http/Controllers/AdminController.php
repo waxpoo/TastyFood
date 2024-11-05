@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Tentang;
-use App\Models\Map;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,9 +18,8 @@ class AdminController extends Controller
         $totalGaleri = Galeri::count();
         $allBerita = Berita::all();
         $allGaleri = Galeri::all();
-        $map = Map::first(); // Mengambil peta pertama
 
-        return view('admin.dashboard', compact('totalBerita', 'totalGaleri', 'allBerita', 'allGaleri', 'map'));
+        return view('admin.dashboard', compact('totalBerita', 'totalGaleri', 'allBerita', 'allGaleri'));
     }
 
     // TENTANG
@@ -44,81 +42,82 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Data tentang berhasil diperbarui.');
     }
-// FUNGSI BERITA
 
-public function createBerita()
-{
-    return view('admin.create-berita');
-}
+    // FUNGSI BERITA
 
-public function daftarBerita()
-{
-    $allBerita = Berita::all();
-    return view('admin.daftar-berita', compact('allBerita'));
-}
-
-public function storeBerita(Request $request)
-{
-    $validated = $request->validate([
-        'judul' => 'required|string|max:255',
-        'isi' => 'required|string',
-        'gambar' => 'nullable|image|max:5048',
-    ]);
-
-    if ($request->hasFile('gambar')) {
-        $imagePath = $request->file('gambar')->store('public/gambar');
-        $validated['gambar'] = basename($imagePath);
+    public function createBerita()
+    {
+        return view('partials.create-berita');
     }
 
-    Berita::create($validated);
-
-    return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil ditambahkan.');
-}
-
-// Metode untuk menampilkan halaman edit
-public function editBerita($id)
-{
-    // Cari berita berdasarkan ID
-    $berita = Berita::findOrFail($id);
-    
-    // Tampilkan halaman edit dengan data berita
-    return view('admin.edit-berita', compact('berita'));
-}
-
-// Metode untuk memperbarui berita
-public function updateBerita(Request $request, $id)
-{
-    $berita = Berita::findOrFail($id);
-
-    $validated = $request->validate([
-        'judul' => 'required|string|max:255',
-        'isi' => 'required|string',
-        'gambar' => 'nullable|image|max:5048',
-    ]);
-
-    if ($request->hasFile('gambar')) {
-        $imagePath = $request->file('gambar')->store('public/gambar');
-        $validated['gambar'] = basename($imagePath);
-    } else {
-        $validated['gambar'] = $berita->gambar; // Tetap gunakan gambar yang ada jika tidak ada gambar baru
+    public function daftarBerita()
+    {
+        $allBerita = Berita::all(); // Ambil semua berita
+        return view('admin.daftar-berita', compact('allBerita'));
     }
 
-    $berita->update($validated);
 
-    return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diperbarui.');
-}
+    public function storeBerita(Request $request)
+    {
+        $validated = $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required|string',
+            'gambar' => 'nullable|image|max:5048',
+        ]);
 
-public function destroyBerita(Berita $berita)
-{
-    $berita->delete();
-    return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
-}
+        if ($request->hasFile('gambar')) {
+            $imagePath = $request->file('gambar')->store('public/gambar');
+            $validated['gambar'] = basename($imagePath);
+        }
+
+        Berita::create($validated);
+
+        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil ditambahkan.');
+    }
+
+    // Metode untuk menampilkan halaman edit
+    public function editBerita($id)
+    {
+        // Cari berita berdasarkan ID
+        $berita = Berita::findOrFail($id);
+
+        // Tampilkan halaman edit dengan data berita
+        return view('partials.edit-berita', compact('berita'));
+    }
+    // Metode untuk memperbarui berita
+    public function updateBerita(Request $request, $id)
+    {
+        $berita = Berita::findOrFail($id);
+
+        $validated = $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required|string',
+            'gambar' => 'nullable|image|max:5048',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $imagePath = $request->file('gambar')->store('public/gambar');
+            $validated['gambar'] = basename($imagePath);
+        } else {
+            $validated['gambar'] = $berita->gambar; // Tetap gunakan gambar yang ada jika tidak ada gambar baru
+        }
+
+        $berita->update($validated);
+
+        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diperbarui.');
+    }
+
+    public function destroyBerita(Berita $berita)
+    {
+        $berita->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
+    }
 
 
     // FUNGSI GALERI
     public function createGaleri()
     {
-        return view('admin.create-galeri');
+        return view('partials.create-galeri');
     }
 
     public function daftarGaleri()
@@ -126,7 +125,6 @@ public function destroyBerita(Berita $berita)
         $allGaleri = Galeri::all();
         return view('admin.daftar-galeri', compact('allGaleri'));
     }
-
     public function showGaleri()
     {
         $galeriItems = Galeri::all();
@@ -150,7 +148,7 @@ public function destroyBerita(Berita $berita)
     public function editGaleri($id)
     {
         $galeriItem = Galeri::findOrFail($id);
-        return view('admin.edit-galeri', compact('galeriItem'));
+        return view('partials.edit-galeri', compact('galeriItem'));
     }
 
     public function updateGaleri(Request $request, $id)
@@ -202,39 +200,5 @@ public function destroyBerita(Berita $berita)
         ]);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
-    }
-    // FUNGSI MAPS
-    public function editMap()
-    {
-        // Mengambil data peta pertama
-        $map = Map::first();
-
-        if (!$map) {
-            return redirect()->route('admin.maps')->with('error', 'Peta tidak ditemukan.');
-        }
-
-        // Menampilkan form edit peta dengan data yang ada
-        return view('admin.edit-map', compact('map'));
-    }
-    public function updateMap(Request $request)
-    {
-        $validated = $request->validate([
-            'latitude' => 'required|numeric|max:90', // Menambahkan validasi numerik
-            'longitude' => 'required|numeric|max:180', // Menambahkan validasi numerik
-        ]);
-
-        $map = Map::first();
-
-        if (!$map) {
-            return redirect()->route('admin.maps')->with('error', 'Peta tidak ditemukan.');
-        }
-
-        // Update data peta
-        $map->update([
-            'latitude' => (float)$validated['latitude'], // Casting ke float
-            'longitude' => (float)$validated['longitude'], // Casting ke float
-        ]);
-
-        return redirect()->route('admin.dashboard')->with('success', 'Peta berhasil diperbarui.');
     }
 }

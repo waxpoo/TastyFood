@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-4">
         <h2>Daftar Berita</h2>
-        <a href="{{ route('berita.create') }}" class="btn btn-primary mb-3">Tambah Berita</a>
+      <li><a href="#" onclick="showModal('create-berita')">Tambah Berita</a></li>
         <table class="table table-striped">
             <thead>
                 <tr>

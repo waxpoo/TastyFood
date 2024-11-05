@@ -11,31 +11,33 @@ body {
     background-color: #ffffff;
     color: #000000;
 }
-
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Mengatur elemen di dalam header agar tersusun di kanan */
     align-items: center;
-    padding: 20px 50px;
+    padding: 20px 50px; /* Jarak atas-bawah dan kiri-kanan */
     background-color: transparent;
     color: #fff;
-    position: absolute;
+    position: absolute; /* Tetap di atas halaman */
     width: 100%;
-    z-index: 1000;
+    z-index: 1000; /* Agar tetap di atas elemen lainnya */
 }
 
 header .logo {
     font-size: 24px;
     font-weight: bold;
+    margin-right: auto; /* Memindahkan logo ke kiri dan membuat ruang untuk navbar */
 }
 
 header nav ul {
     display: flex;
     list-style: none;
+    padding: 0; /* Menghapus padding default */
+    margin: 0; /* Menghapus margin default */
 }
 
 header nav ul li {
-    margin-left: 20px;
+    margin-left: 20px; /* Spasi antar item */
 }
 
 header nav ul li a {
@@ -49,6 +51,7 @@ header nav ul li a {
 header nav ul li a:hover {
     color: #f4f4f4;
 }
+
 
 /* Hero Section CSS */
 .hero {
@@ -186,7 +189,7 @@ header nav ul li a:hover {
 .article-card {
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 30px;

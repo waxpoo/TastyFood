@@ -85,7 +85,6 @@ header nav ul li a:hover {
 .contact-form form {
     display: grid;
     gap: 20px;
-    /* Increased gap between items */
     grid-template-columns: 1fr 1fr;
 }
 
@@ -106,104 +105,112 @@ header nav ul li a:hover {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    /* Slightly rounded corners */
 }
 
 .contact-form .form-group textarea {
     resize: vertical;
     height: 150px;
 }
+
 .contact-form button {
-    grid-column: span 2; /* Span across both columns */
+    grid-column: span 2;
     padding: 12px 30px;
     background: black;
     color: white;
     border: none;
-    border-radius: 10px; /* Slightly rounded corners */
+    border-radius: 10px;
     cursor: pointer;
-    margin: 10px 0; /* Reduced margin to move button upwards */
+    margin: 10px 0;
     display: block;
-    width: 100%; /* Make the button stretch the full width of the form */
-    text-align: center; /* Center text within the button */
+    width: 100%;
+    text-align: center;
 }
-
-
 
 .contact-form button:hover {
     background: #333;
+}
+.checkmark {
+    width: 50px; /* Sesuaikan ukuran sesuai kebutuhan */
+    animation: fadeIn 0.5s ease-in-out; /* Animasi muncul */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8); /* Mulai dari ukuran kecil */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1); /* Ukuran penuh */
+    }
+}
+
+
+/* Contact Info Styles */
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 0 20px;
 }
 
 /* Contact Info Styles */
 .contact-info {
     display: flex;
     flex-wrap: wrap;
-    /* Allows items to wrap to the next line on smaller screens */
     justify-content: space-between;
     margin: 20px auto;
     max-width: 1000px;
-    /* Limit the width to match the form width */
     padding: 0 20px;
 }
 
-.info-item {
+.contact-info > div {
     text-align: center;
     width: 30%;
-    /* Adjust width to fit within the flex container */
     margin-bottom: 20px;
-    /* Add some space below each item */
+    padding: 10px;
     box-sizing: border-box;
+    border-radius: 8px;
 }
 
-.info-item-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Center items horizontally */
-}
-
-.info-item img {
-    width: 50px;
-    /* Set a smaller size for the icons */
-    height: 50px;
+.contact-info img.contact-icon {
+    width: 40px;
+    height: 40px;
     margin-bottom: 10px;
 }
 
-.info-item h4 {
-    margin: 10px 0 5px;
+.contact-info h3 {
+    margin-top: 5px;
     font-size: 1.2em;
     color: #333;
-    /* Change color for better visibility */
 }
 
-.info-item p {
+.contact-info p {
     font-size: 1em;
     color: #555;
-    /* Change color for better visibility */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .contact-info {
         flex-direction: column;
-        /* Stack items vertically on smaller screens */
         align-items: center;
     }
 
-    .info-item {
+    .contact-info > div {
         width: 80%;
-        /* Make each item slightly smaller on smaller screens */
     }
 }
 
-
-
 /* Map Styles */
-.map {
+.map-container {
     text-align: center;
     margin: 20px 0;
 }
 
-.map iframe {
+.map-container iframe {
     width: 80%;
     height: 450px;
     border: 0;
@@ -257,5 +264,4 @@ footer {
     margin-top: 2rem;
     text-align: center;
     padding-top: 1rem;
-    border-top: 1px solid #555;
 }

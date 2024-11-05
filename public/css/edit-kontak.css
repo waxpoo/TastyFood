@@ -1,0 +1,142 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #212529; /* Warna latar belakang gelap */
+    color: #f8f9fa; /* Warna teks terang */
+}
+
+/* Container untuk form */
+.container {
+    max-width: 900px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Center konten */
+    padding: 20px; /* Ruang dalam konten */
+}
+
+/* Judul */
+h2 {
+    color: #f8f9fa; /* Warna teks judul */
+    font-weight: bold; /* Bold */
+    margin-bottom: 20px; /* Ruang bawah */
+}
+
+/* Tombol Lihat */
+.btn-success {
+    display: inline-flex; /* Fleksibel */
+    align-items: center; /* Center vertikal */
+    gap: 8px; /* Spasi antara ikon dan teks */
+}
+
+/* Alert */
+.alert {
+    font-size: 0.9rem; /* Ukuran font */
+    padding: 10px; /* Ruang dalam alert */
+    margin-top: 10px; /* Ruang atas */
+    border-radius: 5px; /* Sudut melengkung */
+}
+
+/* Form Group */
+.form-group {
+    position: relative; /* Posisi relatif untuk elemen dalamnya */
+    margin-bottom: 25px; /* Ruang bawah form group */
+}
+
+/* Label Form */
+.form-label {
+    color: #f8f9fa; /* Warna teks label */
+    font-weight: 500; /* Bold */
+    font-size: 1rem; /* Ukuran font */
+}
+
+/* Input dan Select */
+.form-control, .form-select {
+    border-radius: 8px; /* Sudut melengkung untuk input */
+    padding: 12px; /* Ruang dalam input */
+    border: 1px solid #495057; /* Border input */
+    background-color: #343a40; /* Latar belakang input gelap */
+    color: #f8f9fa; /* Warna teks input */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Bayangan halus */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transisi halus */
+}
+
+/* Gaya untuk textarea */
+textarea.form-control {
+    resize: none; /* Menonaktifkan pengubahan ukuran */
+}
+
+/* Efek fokus untuk input dan select */
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff; /* Warna border saat fokus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Bayangan saat fokus */
+}
+
+/* Gaya untuk tombol */
+.btn {
+    border-radius: 5px; /* Sudut melengkung untuk tombol */
+}
+
+/* Gaya untuk tombol utama */
+.btn-primary {
+    background-color: #e67e22; /* Warna tombol utama */
+    color: white; /* Warna teks tombol */
+    padding: 10px 20px; /* Padding tombol */
+    font-size: 1rem; /* Ukuran font tombol */
+    font-weight: 500; /* Bold */
+    transition: background-color 0.3s ease; /* Transisi saat hover */
+}
+
+/* Efek hover untuk tombol utama */
+.btn-primary:hover {
+    background-color: #ff8400; /* Warna tombol saat hover */
+}
+
+/* Background untuk form */
+.bg-light {
+    background-color: #343a40 !important; /* Latar belakang form dalam mode gelap */
+}
+
+/* Rounded corners */
+.rounded {
+    border-radius: 8px !important; /* Sudut melengkung untuk elemen */
+}
+
+/* Shadow for form */
+.shadow-sm {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5); /* Bayangan halus yang lebih dalam */
+}
+
+/* Styles untuk penataan secara keseluruhan */
+.form-control, .form-select {
+    width: 100%; /* Lebar penuh */
+}
+
+textarea {
+    height: 100px; /* Tinggi tetap untuk textarea */
+}
+
+/* Gaya untuk Tabel Kontak */
+.table {
+    width: 100%; /* Lebar penuh untuk tabel */
+    border-collapse: collapse; /* Menghilangkan spasi antar border */
+    margin-top: 20px; /* Ruang atas tabel */
+}
+
+.table th, .table td {
+    padding: 12px; /* Ruang dalam sel */
+    border: 1px solid #495057; /* Border sel */
+    text-align: left; /* Teks rata kiri */
+}
+
+.table th {
+    background-color: #007bff; /* Latar belakang header tabel */
+    color: white; /* Warna teks header tabel */
+}
+
+/* Gaya untuk tombol aksi di dalam tabel */
+.table .btn {
+    margin: 0 5px; /* Spasi antar tombol */
+}
+
+/* Efek hover pada baris tabel */
+.table tr:hover {
+    background-color: #495057; /* Latar belakang saat hover */
+}

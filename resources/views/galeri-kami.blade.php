@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Food - Galeri Kami</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/galeri.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -43,19 +44,19 @@
         </div>
     </div>
 
-    <div class="gallery-container2">
-        @foreach ($galeriList as $galeri)
-            <div class="gallery-item2">
-                <img src="{{ asset('storage/galeri/' . $galeri->gambar) }}" alt="Image {{ $loop->index + 1 }}">
-            </div>
-        @endforeach
-    </div>
+    <section class="gallery-section">
+        <div class="gallery-container2">
+            @foreach ($galeriList as $galeri)
+                <div class="gallery-item2">
+                    <img src="{{ asset('storage/galeri/' . $galeri->gambar) }}" alt="Image {{ $loop->index + 1 }}" class="img-fluid">
+                </div>
+            @endforeach
+        </div>
 
-<div class="pagination-controls">
-    <button id="prevPage">&lt;</button>
-    <span id="pageIndicator">1</span>
-    <button id="nextPage">&gt;</button>
-</div>
+        <div class="pagination-controls">
+            {{ $galeriList->links() }} <!-- Memanggil links() pada objek paginasi -->
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
@@ -118,8 +119,7 @@
             setTimeout(() => {
                 currentImage.classList.remove('active');
                 nextImage.classList.add('active'); // Jadikan gambar baru sebagai 'active'
-                nextImage.classList.remove(direction === 'next' ? 'next' :
-                'prev'); // Hilangkan kelas 'next' atau 'prev'
+                nextImage.classList.remove(direction === 'next' ? 'next' : 'prev'); // Hilangkan kelas 'next' atau 'prev'
 
                 setTimeout(() => {
                     galleryItem.removeChild(currentImage); // Hapus gambar lama setelah transisi selesai
@@ -153,48 +153,10 @@
         showImage(currentIndex, 'next'); // Tampilkan gambar pertama dengan transisi ke kanan
     </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const itemsPerPage = 12;
-        const galleryItems2 = document.querySelectorAll('.gallery-container2 .gallery-item2');
-        const totalItems2 = galleryItems2.length;
-        const totalPages2 = Math.ceil(totalItems2 / itemsPerPage);
-        let currentPage2 = 1;
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        function showPage2(page) {
-            const start = (page - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-
-            // Sembunyikan semua item
-            galleryItems2.forEach((item, index) => {
-                item.style.display = (index >= start && index < end) ? 'block' : 'none';
-            });
-
-            // Update page indicator
-            document.getElementById('pageIndicator').textContent = page;
-        }
-
-        // Fungsi untuk pindah ke halaman sebelumnya
-        document.getElementById('prevPage').addEventListener('click', function () {
-            if (currentPage2 > 1) {
-                currentPage2--;
-                showPage2(currentPage2);
-            }
-        });
-
-        // Fungsi untuk pindah ke halaman berikutnya
-        document.getElementById('nextPage').addEventListener('click', function () {
-            if (currentPage2 < totalPages2) {
-                currentPage2++;
-                showPage2(currentPage2);
-            }
-        });
-
-        // Tampilkan halaman pertama saat pertama kali load
-        showPage2(currentPage2);
-    });
-</script>
-    
 </body>
 
 </html>
