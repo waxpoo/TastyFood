@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Food - Kontak Kami</title>
     <link rel="stylesheet" href="{{ asset('css/kontak.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         .popup {
@@ -20,55 +17,76 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Background semi-transparan */
-            z-index: 1000; /* Memastikan popup berada di atas elemen lain */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Background semi-transparan */
+            z-index: 1000;
+            /* Memastikan popup berada di atas elemen lain */
         }
 
         .popup-content {
-            background-color: #fff; /* Warna latar belakang popup */
-            border-radius: 10px; /* Sudut melengkung */
+            background-color: #fff;
+            /* Warna latar belakang popup */
+            border-radius: 10px;
+            /* Sudut melengkung */
             padding: 20px;
-            text-align: center; /* Teks terpusat */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
-            width: 300px; /* Lebar popup */
+            text-align: center;
+            /* Teks terpusat */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            /* Bayangan untuk efek kedalaman */
+            width: 300px;
+            /* Lebar popup */
         }
 
         .popup h2 {
-            margin-bottom: 10px; /* Jarak bawah untuk heading */
+            margin-bottom: 10px;
+            /* Jarak bawah untuk heading */
         }
 
         .popup p {
-            margin-bottom: 20px; /* Jarak bawah untuk teks */
+            margin-bottom: 20px;
+            /* Jarak bawah untuk teks */
         }
 
         .popup button {
-            background-color: #f76c6c; /* Warna tombol */
-            color: #fff; /* Warna teks tombol */
+            background-color: #f76c6c;
+            /* Warna tombol */
+            color: #fff;
+            /* Warna teks tombol */
             border: none;
-            border-radius: 5px; /* Sudut tombol melengkung */
-            padding: 10px 15px; /* Padding tombol */
+            border-radius: 5px;
+            /* Sudut tombol melengkung */
+            padding: 10px 15px;
+            /* Padding tombol */
             cursor: pointer;
-            transition: background-color 0.3s; /* Transisi warna tombol */
+            transition: background-color 0.3s;
+            /* Transisi warna tombol */
         }
 
         .popup button:hover {
-            background-color: #e65c5c; /* Warna tombol saat hover */
+            background-color: #e65c5c;
+            /* Warna tombol saat hover */
         }
 
         .checkmark {
-            width: 50px; /* Sesuaikan ukuran sesuai kebutuhan */
-            animation: fadeIn 0.5s ease-in-out; /* Animasi muncul */
-            margin-bottom: 15px; /* Jarak bawah untuk gambar centang */
+            width: 50px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+            animation: fadeIn 0.5s ease-in-out;
+            /* Animasi muncul */
+            margin-bottom: 15px;
+            /* Jarak bawah untuk gambar centang */
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.8); /* Mulai dari ukuran kecil */
+                transform: scale(0.8);
+                /* Mulai dari ukuran kecil */
             }
+
             to {
                 opacity: 1;
-                transform: scale(1); /* Ukuran penuh */
+                transform: scale(1);
+                /* Ukuran penuh */
             }
         }
     </style>
@@ -107,7 +125,7 @@
                 </div>
             @endif
 
-            <form id="contactForm" action="{{ route('kontak.store') }}" method="POST">
+            <form action="{{ route('storeContact') }}" method="POST" id="contactForm">
                 @csrf
                 <div class="form-left">
                     <div class="form-group">
@@ -131,7 +149,6 @@
             <!-- Popup Konfirmasi -->
             <div class="popup" id="popup" style="display: none;">
                 <div class="popup-content">
-                    <img src="{{ asset('checkmark.png') }}" alt="Centang" class="checkmark" id="checkmark" style="display: none;">
                     <h2>Konfirmasi</h2>
                     <p>Apakah Anda yakin ingin mengirim pesan?</p>
                     <button onclick="confirmSubmit()">Ya, Kirim</button>
@@ -236,10 +253,8 @@
     }
 
     function confirmSubmit() {
-        document.getElementById('checkmark').style.display = 'block'; // Tampilkan gambar centang
-        setTimeout(function() {
-            document.getElementById('contactForm').submit(); // Kirim formulir setelah 1 detik
-        }, 1000); // Waktu delay sebelum mengirim formulir
+        document.getElementById('popup').style.display = 'none'; // Sembunyikan popup setelah konfirmasi
+        document.getElementById('contactForm').submit(); // Kirim formulir
     }
 </script>
 

@@ -7,6 +7,7 @@ use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Tentang;
 use App\Models\FormKontak;
+use App\Models\ContactInfo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -40,6 +41,11 @@ class HomeController extends Controller
         $galeriList = Galeri::paginate(12); // Ambil semua data galeri
         return view('galeri-kami', compact('galeriList')); // Kirim data galeri ke view
     }
+    public function kontak()
+    {
+        $contact = ContactInfo::first(); // Ambil data kontak pertama dari tabel 'contact_info'
+        return view('kontak-kami', compact('contact')); // Kirim data 'contact' ke tampilan
+    }
 
     public function storeFormKontak(Request $request)
     {
@@ -59,9 +65,7 @@ class HomeController extends Controller
             'message' => $request->message,
         ]);
 
-        // Tambahkan debug log
         Log::info($request->all());
-        // Redirect ke rute kontak dengan pesan sukses
         return redirect()->route('kontak.show')->with('success');
     }
 

@@ -23,7 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak');
 
     // Formulir Kontak
-    Route::post('/kontak', [HomeController::class, 'storeContact'])->name('storeContact');
+    Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak.show');
+    Route::post('/kontak-kami', [HomeController::class, 'storeFormKontak'])->name('storeContact');
 
     // Logout (hanya bisa diakses setelah login)
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');

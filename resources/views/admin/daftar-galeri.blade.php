@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-4">
         <h2>Daftar Galeri</h2>
-        <a href="{{ route('galeri.create') }}" class="btn btn-primary mb-3">Tambah Galeri</a>
+        <li><a href="#" onclick="showModal('create-galeri')">Tambah Galeri</a></li>
         <table class="table table-striped">
             <thead>
                 <tr>

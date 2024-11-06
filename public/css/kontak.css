@@ -141,7 +141,7 @@ header nav ul li a:hover {
     }
     to {
         opacity: 1;
-        transform: scale(1); /* Ukuran penuh */
+        transform: scale(1); 
     }
 }
 

@@ -64,7 +64,8 @@
     </div>
 
     <!-- Modal -->
-    <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div id="modal-body">
@@ -94,7 +95,7 @@
                 })
                 .catch(error => console.error('Error loading modal:', error));
         }
-
+        //fungsi sidebar
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.classList.toggle('active');
