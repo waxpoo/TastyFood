@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak.show');
 
     // Form Kontak untuk form aja
-    Route::post('/kontak-kami', [HomeController::class, 'storeFormKontak'])->name('formcontact'); //untuk formkontak
+    Route::post('/kontak-kami', [HomeController::class, 'storeFormKontak'])->name('storeContact'); //untuk formkontak
 
     // Logout (hanya bisa diakses setelah login)
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
