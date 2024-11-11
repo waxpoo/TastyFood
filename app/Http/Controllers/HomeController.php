@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Tentang;
-use App\Models\FormKontak;
 use App\Models\ContactInfo;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 
 class HomeController extends Controller
@@ -47,27 +45,6 @@ class HomeController extends Controller
         return view('kontak-kami', compact('contact')); // Kirim data 'contact' ke tampilan
     }
 
-    public function storeFormKontak(Request $request)
-    {
-        // Validasi data
-        $request->validate([
-            'subject' => 'required|string|max:255',
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'message' => 'required|string',
-        ]);
-
-        // Simpan data ke database
-        FormKontak::create([
-            'subject' => $request->subject,
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message,
-        ]);
-
-        Log::info($request->all());
-        return redirect()->route('kontak.show')->with('success');
-    }
 
     // Menampilkan halaman login
     public function showLoginForm()

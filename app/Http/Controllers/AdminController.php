@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Tentang;
+use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,40 +19,55 @@ class AdminController extends Controller
         $totalGaleri = Galeri::count();
         $allBerita = Berita::all();
         $allGaleri = Galeri::all();
+        $tentang = Tentang::first();
+        $kontak = ContactInfo::first();
 
-        return view('admin.dashboard', compact('totalBerita', 'totalGaleri', 'allBerita', 'allGaleri'));
+        return view('admin.dashboard', compact('totalBerita', 'totalGaleri', 'allBerita', 'allGaleri','tentang','kontak'));
     }
 
-    // TENTANG
-    public function editTentangKami(Request $request)
-{
-    $tentang = Tentang::first(); 
-
-    if (!$tentang) {
-        return redirect()->route('admin.dashboard')->with('error', 'Data tentang tidak ditemukan.');
-    }
-
-    return view('partials.edit-tentang', compact('tentang')); // Pastikan variabel $tentang dikirim ke view
-}
-
-    public function updateTentangKami(Request $request)
+    // Fungsi untuk menampilkan halaman edit Tentang Kami
+    public function editTentangKami()
     {
-        $request->validate([
-            'about_text' => 'required',
-            'vision_text' => 'required',
-            'mission_text' => 'required',
-        ]);
+        // Ambil data Tentang pertama
+        $tentang = Tentang::first(); // Atau gunakan sesuai dengan logika Anda
 
-        $tentang = Tentang::first(); // Ambil data pertama dari tabel 'tentangs'
-
+        // Jika tidak ada data Tentang, redirect dengan pesan error
         if (!$tentang) {
-            return redirect()->route('admin.dashboard')->with('error', 'Data tentang tidak ditemukan.');
+            return redirect()->route('admin.dashboard')->with('error', 'Data Tentang Kami tidak ditemukan.');
         }
 
-        // Update data tentang
-        $tentang->update($request->only(['about_text', 'vision_text', 'mission_text']));
+        // Kirim data tentang ke view
+        return view('admin.dashboard', compact('tentang'));
 
-        return redirect()->route('admin.dashboard')->with('success', 'Data tentang berhasil diperbarui.');
+    }
+
+    // Fungsi untuk memperbarui informasi Tentang Kami
+    public function updateTentangKami(Request $request)
+    {
+        // Validasi data input
+        $request->validate([
+            'about_text' => 'required|string',
+            'vision_text' => 'required|string',
+            'mission_text' => 'required|string',
+        ]);
+
+        // Ambil data Tentang pertama
+        $tentang = Tentang::first();
+
+        // Jika data Tentang Kami tidak ditemukan
+        if (!$tentang) {
+            return redirect()->back()->with('error', 'Data Tentang Kami tidak ditemukan.');
+        }
+
+        // Update data Tentang Kami dengan data baru dari form
+        $tentang->update([
+            'about_text' => $request->about_text,
+            'vision_text' => $request->vision_text,
+            'mission_text' => $request->mission_text,
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('admin.dashboard')->with('success', 'Informasi Tentang Kami berhasil diperbarui.');
     }
 
     // FUNGSI BERITA
@@ -63,8 +79,11 @@ class AdminController extends Controller
     public function daftarBerita()
     {
         $allBerita = Berita::all(); // Ambil semua berita
-        return view('admin.daftar-berita', compact('allBerita'));
+        $totalBerita = $allBerita->count(); // Hitung total berita
+
+        return view('admin.daftar-berita', compact('allBerita', 'totalBerita'));
     }
+
 
     public function storeBerita(Request $request)
     {
@@ -84,7 +103,7 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil ditambahkan.');
     }
 
-    // Metode untuk menampilkan halaman edit
+    // Metode untuk menampilkan halaman edit berita
     public function editBerita($id)
     {
         // Cari berita berdasarkan ID
@@ -93,6 +112,7 @@ class AdminController extends Controller
         // Tampilkan halaman edit dengan data berita
         return view('partials.edit-berita', compact('berita'));
     }
+
     // Metode untuk memperbarui berita
     public function updateBerita(Request $request, $id)
     {
@@ -122,7 +142,6 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
     }
 
-
     // FUNGSI GALERI
     public function createGaleri()
     {
@@ -134,6 +153,7 @@ class AdminController extends Controller
         $allGaleri = Galeri::all();
         return view('admin.daftar-galeri', compact('allGaleri'));
     }
+
     public function showGaleri()
     {
         $galeriItems = Galeri::all();

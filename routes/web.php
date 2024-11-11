@@ -21,10 +21,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/berita-kami', [HomeController::class, 'berita'])->name('berita');
     Route::get('/galeri-kami', [HomeController::class, 'galeri'])->name('galeri');
     Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak');
-    Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak.show');
 
     // Form Kontak untuk form aja
-    Route::post('/kontak-kami', [HomeController::class, 'storeFormKontak'])->name('storeContact'); //untuk formkontak
+    Route::post('/kontak-kami', [ContactInfoController::class, 'storeFormKontak'])->name('storeContact'); //untuk formkontak
 
     // Logout (hanya bisa diakses setelah login)
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
@@ -53,13 +52,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/galeri-kami', [AdminController::class, 'showGaleri'])->name('galeri.kami');
 
     // Rute untuk Tentang Kami
-    Route::get('/edit-tentang', [AdminController::class, 'editTentangKami'])->name('edit-tentang');
-    Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('tentang.update'); //coba bagian modal
+    Route::get('/admin/edit-tentang', [AdminController::class, 'editTentangKami'])->name('tentang.edit');
+    Route::put('/tentang/update', [AdminController::class, 'updateTentangKami'])->name('tentang.update');
 
-     // Tambahkan di dalam grup admin
-     Route::get('/edit-kontak', [ContactInfoController::class, 'edit'])->name('kontak.edit');
-     Route::put('/update-kontak', [ContactInfoController::class, 'update'])->name('kontak.update');
-});
-Route::get('/partials/{modal}', function ($modal) {
-    return view('partials.' . $modal);
+    // Rute untuk Kontak Info
+    Route::get('/kontak/edit', [ContactInfoController::class, 'editKontak'])->name('kontak.edit');
+    Route::put('/kontak/update', [ContactInfoController::class, 'updateKontak'])->name('kontak.update');
 });

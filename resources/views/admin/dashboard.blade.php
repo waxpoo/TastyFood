@@ -15,13 +15,11 @@
         <nav class="sidebar">
             <h2>Admin Panel</h2>
             <ul>
-                <li><a href="#" onclick="showModal('dashboard')">Dashboard</a></li>
                 <li><a href="#" onclick="showModal('create-berita')">Tambah Berita</a></li>
                 <li><a href="#" onclick="showModal('create-galeri')">Tambah Galeri</a></li>
                 <li><a href="#" onclick="showModal('edit-kontak')">Edit KontakInfo</a></li>
                 <li><a href="#" onclick="showModal('edit-tentang')">Edit Tentang Kami</a></li>
-                <li>
-                    <a href="{{ route('logout') }}"
+                <li><a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 </li>
             </ul>
@@ -54,54 +52,61 @@
                     </div>
                 </section>
 
-                <!-- Sertakan Daftar Berita -->
                 @include('admin.daftar-berita')
-
-                <!-- Sertakan Daftar Galeri -->
                 @include('admin.daftar-galeri')
             </main>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!-- Modal Template -->
+    <div class="modal fade" id="create-berita" tabindex="-1" aria-labelledby="createBeritaLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div id="modal-body">
-                    <!-- Konten modal akan dimuat di sini -->
+                <div class="modal-body">@include('partials.create-berita')</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="create-galeri" tabindex="-1" aria-labelledby="createGaleriLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">@include('partials.create-galeri')</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit-kontak" tabindex="-1" aria-labelledby="editKontakLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @include('partials.edit-kontak')
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function showModal(modalName) {
-            const modalBody = document.getElementById('modal-body');
+    <div class="modal fade" id="edit-tentang" tabindex="-1" aria-labelledby="editTentangLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">@include('partials.edit-tentang')</div>
+            </div>
+        </div>
+    </div>
 
-            // Muat konten dari file partials
-            fetch(`/partials/${modalName}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    modalBody.innerHTML = data;
-                    const modal = new bootstrap.Modal(document.getElementById('modal'));
-                    modal.show();
-                })
-                .catch(error => console.error('Error loading modal:', error));
-        }
-        //fungsi sidebar
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fungsi sidebar
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.classList.toggle('active');
         }
-    </script>
 
+        // Fungsi untuk menampilkan modal (termasuk untuk edit)
+        function showModal(modalId) {
+            const modal = new bootstrap.Modal(document.getElementById(modalId));
+            modal.show();
+        }
+    </script>
 </body>
 
 </html>

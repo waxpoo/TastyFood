@@ -1,12 +1,12 @@
 <div class="modal-header">
-    <h5 class="modal-title">Edit Tentang Kami</h5>
+    <h5 class="modal-title" id="editTentangLabel">Edit Tentang</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 
 <div class="modal-body">
-  
-    <form id="updateForm" action="{{ route('tentang.update') }}" method="POST">
-        @method('PUT')
+    <form action="{{ route('tentang.update') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT') 
 
         <div class="mb-3">
             <label for="about_text" class="form-label">About</label>
@@ -23,7 +23,6 @@
             <textarea name="mission_text" id="mission_text" class="form-control" required>{{ $tentang->mission_text }}</textarea>
         </div>
 
-        <button type="button" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button> <!-- Perbaiki tombol menjadi submit -->
     </form>
-
 </div>
