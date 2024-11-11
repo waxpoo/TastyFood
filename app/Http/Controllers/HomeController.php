@@ -44,7 +44,7 @@ class HomeController extends Controller
     public function kontak()
     {
         $contact = ContactInfo::first(); // Ambil data kontak pertama dari tabel 'contact_info'
-        return view('kontak-kami', compact('contact')); // Kirim data 'contact' ke tampilan
+        return view('kontak-kami', compact('formcontact')); // Kirim data 'contact' ke tampilan
     }
 
     public function storeFormKontak(Request $request)

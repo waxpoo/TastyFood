@@ -24,10 +24,15 @@ class AdminController extends Controller
 
     // TENTANG
     public function editTentangKami(Request $request)
-    {
-        $tentang = Tentang::first();
-        return view('admin.edit-tentang', compact('tentang'));
+{
+    $tentang = Tentang::first(); 
+
+    if (!$tentang) {
+        return redirect()->route('admin.dashboard')->with('error', 'Data tentang tidak ditemukan.');
     }
+
+    return view('partials.edit-tentang', compact('tentang')); // Pastikan variabel $tentang dikirim ke view
+}
 
     public function updateTentangKami(Request $request)
     {
@@ -37,14 +42,19 @@ class AdminController extends Controller
             'mission_text' => 'required',
         ]);
 
-        $tentang = Tentang::first();
+        $tentang = Tentang::first(); // Ambil data pertama dari tabel 'tentangs'
+
+        if (!$tentang) {
+            return redirect()->route('admin.dashboard')->with('error', 'Data tentang tidak ditemukan.');
+        }
+
+        // Update data tentang
         $tentang->update($request->only(['about_text', 'vision_text', 'mission_text']));
 
         return redirect()->route('admin.dashboard')->with('success', 'Data tentang berhasil diperbarui.');
     }
 
     // FUNGSI BERITA
-
     public function createBerita()
     {
         return view('partials.create-berita');
@@ -55,7 +65,6 @@ class AdminController extends Controller
         $allBerita = Berita::all(); // Ambil semua berita
         return view('admin.daftar-berita', compact('allBerita'));
     }
-
 
     public function storeBerita(Request $request)
     {

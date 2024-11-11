@@ -21,10 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/berita-kami', [HomeController::class, 'berita'])->name('berita');
     Route::get('/galeri-kami', [HomeController::class, 'galeri'])->name('galeri');
     Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak');
-
-    // Formulir Kontak
     Route::get('/kontak-kami', [HomeController::class, 'kontak'])->name('kontak.show');
-    Route::post('/kontak-kami', [HomeController::class, 'storeFormKontak'])->name('storeContact');
+
+    // Form Kontak untuk form aja
+    Route::post('/kontak-kami', [HomeController::class, 'storeFormKontak'])->name('formcontact'); //untuk formkontak
 
     // Logout (hanya bisa diakses setelah login)
     Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
@@ -54,12 +54,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // Rute untuk Tentang Kami
     Route::get('/edit-tentang', [AdminController::class, 'editTentangKami'])->name('edit-tentang');
-    Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('update-tentang');
+    Route::put('/update-tentang', [AdminController::class, 'updateTentangKami'])->name('tentang.update'); //coba bagian modal
 
-    // Tambahkan di dalam grup admin
-    Route::get('/edit-kontak', [ContactInfoController::class, 'edit'])->name('edit.kontak');
-    Route::put('/update-kontak', [ContactInfoController::class, 'update'])->name('contact-info.update');
+     // Tambahkan di dalam grup admin
+     Route::get('/edit-kontak', [ContactInfoController::class, 'edit'])->name('kontak.edit');
+     Route::put('/update-kontak', [ContactInfoController::class, 'update'])->name('kontak.update');
 });
 Route::get('/partials/{modal}', function ($modal) {
-    return view("partials.$modal");
+    return view('partials.' . $modal);
 });

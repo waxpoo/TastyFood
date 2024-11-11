@@ -6,10 +6,9 @@ use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 class ContactInfoController extends Controller
 {
-    public function edit()
-    {
-        $contact = ContactInfo::first();
-        return view('partials.edit-kontak', compact('contact')); // Perbaiki di sini
+    public function edit() {
+        $contact = ContactInfo::first(); // Atau find($id) jika ingin berdasarkan ID
+        return view('partials.edit-kontak', compact('contact'));
     }
 
     public function update(Request $request)
