@@ -41,19 +41,25 @@
                 <section class="dashboard-overview">
                     <h2>Selamat Datang, Admin</h2>
                     <div class="dashboard-cards d-flex justify-content-around">
-                        <div class="card">
+                        <div class="card" onclick="window.location.href='{{ route('admin.daftar-berita') }}'">
                             <h3>Total Berita</h3>
-                            <p>{{ $totalBerita }}</p>
+                            <p><a href="{{ route('admin.daftar-berita') }}">{{ $totalBerita }}</a></p>
                         </div>
-                        <div class="card">
+                        <div class="card" onclick="window.location.href='{{ route('admin.daftar-galeri') }}'">
                             <h3>Total Galeri</h3>
-                            <p>{{ $totalGaleri }}</p>
+                            <p><a href="{{ route('admin.daftar-galeri') }}">{{ $totalGaleri }}</a></p>
+                        </div>
+                        <div class="card" onclick="window.location.href='{{ route('admin.daftar-formkontak') }}'">
+                            <h3>Total Kontak</h3>
+                            <p><a href="{{ route('admin.daftar-formkontak') }}">{{ $totalKontak }}</a></p>
                         </div>
                     </div>
                 </section>
 
+
                 @include('admin.daftar-berita')
                 @include('admin.daftar-galeri')
+                @include('admin.daftar-formkontak')
             </main>
         </div>
     </div>
@@ -94,6 +100,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         // Fungsi sidebar
         function toggleSidebar() {

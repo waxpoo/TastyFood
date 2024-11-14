@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-4">
         <h2>Daftar Galeri</h2>
-        <li><a href="#" onclick="showModal('create-galeri')">Tambah Galeri</a></li>
+        <a href="#" class="btn btn-primary" onclick="showModal('create-galeri')">Tambah galeri</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{ $galeri->id }}</td>
                         <td>
-                            <a href="{{ route('galeri.edit', $galeri->id) }}" class="btn btn-warning">Edit</a>
+                            <!-- Tombol untuk membuka modal edit gambar galeri -->
                             <form action="{{ route('galeri.destroy', $galeri->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
@@ -38,7 +38,21 @@
         </table>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Fungsi untuk membuka modal edit galeri
+        function openEditGaleriModal(id) {
+            $.get('/admin/galeri/' + id + '/edit', function(data) {
+                // Mengatur form action URL untuk update
+                $('#editGaleriForm').attr('action', '/admin/galeri/' + id);
+
+                // Tampilkan modal
+                $('#editGaleriModal').modal('show');
+            });
+        }
+
+        // Konfirmasi penghapusan galeri
         function confirmDeletion(event) {
             event.preventDefault();
             const form = event.target.closest('form');

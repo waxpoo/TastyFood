@@ -11,6 +11,7 @@ class ContactInfoController extends Controller
 {
     public function editKontak()
     {
+
         // Ambil data pertama dari tabel ContactInfo
         $kontak = ContactInfo::first();
 
@@ -25,6 +26,7 @@ class ContactInfoController extends Controller
 
     public function updateKontak(Request $request)
     {
+
         // Validasi data yang diinputkan
         $request->validate([
             'email' => 'required|email',
@@ -49,6 +51,7 @@ class ContactInfoController extends Controller
 
     public function showContact()
     {
+
         // Ambil data pertama dari tabel ContactInfo
         $kontak = ContactInfo::first();
 
@@ -56,7 +59,18 @@ class ContactInfoController extends Controller
         return view('kontak-kami', compact('kontak'));
     }
 
-    public function storeFormKontak(Request $request)
+    // FORM KONTOL
+    public function editFormKontak($id)
+    {
+        // Ambil data form kontak berdasarkan ID
+        $formKontak = FormKontak::findOrFail($id); // Ganti FormKontak jadi formKontak
+
+        // Jika data tidak ditemukan, redirect dengan pesan error
+        return response()->json($formKontak); // Ganti FormKontak jadi formKontak
+    }
+
+    // Memperbarui data formulir
+    public function updateFormKontak(Request $request, $id)
     {
         // Validasi data yang diterima
         $request->validate([
@@ -66,8 +80,16 @@ class ContactInfoController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Simpan data formulir kontak ke dalam database
-        FormKontak::create([
+        // Cari form kontak berdasarkan ID
+        $formKontak = FormKontak::find($id); // Ganti FormKontak jadi formKontak
+
+        // Jika data tidak ditemukan, kembalikan dengan pesan error
+        if (!$formKontak) {
+            return redirect()->route('admin.dashboard')->with('error', 'Form Kontak tidak ditemukan.');
+        }
+
+        // Update data form kontak dengan data baru
+        $formKontak->update([ // Ganti FormKontak jadi formKontak
             'subject' => $request->subject,
             'name' => $request->name,
             'email' => $request->email,
@@ -75,9 +97,29 @@ class ContactInfoController extends Controller
         ]);
 
         // Simpan log untuk referensi
-        Log::info('Form Kontak Baru: ', $request->all());
+        Log::info('Form Kontak Diperbarui: ', $request->all());
 
-        // Redirect ke halaman kontak dengan pesan sukses
-        return redirect()->route('kontak.show')->with('success', 'Pesan Anda telah dikirim.');
+        // Redirect ke halaman dashboard admin dengan pesan sukses
+        return redirect()->route('admin.dashboard')->with('success', 'Form Kontak berhasil diperbarui.');
+    }
+
+    public function destroyFormKontak($id)
+    {
+        // Cari form kontak berdasarkan ID
+        $formKontak = FormKontak::find($id); // Ganti FormKontak jadi formKontak
+
+        // Jika data tidak ditemukan, kembalikan dengan pesan error
+        if (!$formKontak) {
+            return redirect()->route('admin.dashboard')->with('error', 'Form Kontak tidak ditemukan.');
+        }
+
+        // Hapus form kontak
+        $formKontak->delete(); // Ganti FormKontak jadi formKontak
+
+        // Simpan log untuk referensi
+        Log::info('Form Kontak Dihapus: ', ['id' => $id]);
+
+        // Redirect ke halaman dashboard admin dengan pesan sukses
+        return redirect()->route('admin.daftar-formkontak')->with('success', 'Data berhasil dihapus.');
     }
 }

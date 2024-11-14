@@ -1,38 +1,34 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Berita</title>
-    <link rel="stylesheet" href="{{ asset('css/edit-berita.css') }}">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <h1>Edit Berita</h1>
-            <a href="{{ route('admin.dashboard') }}" class="btn">Kembali ke Dashboard</a>
+<div class="modal-header">
+    <h5 class="modal-title" id="createBeritaLabel">Edit Berita</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<div class="modal-body">
+    <form id="editForm" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT') <!-- Menentukan method PUT -->
+
+        <!-- Judul -->
+        <div class="mb-3">
+            <label for="editJudul" class="form-label">Judul:</label>
+            <input type="text" id="editJudul" name="judul" class="form-control" required>
         </div>
-    </header>
 
-    <main>
-        <!-- Formulir Edit Berita -->
-        <section>
-            <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+        <!-- Isi Berita -->
+        <div class="mb-3">
+            <label for="editIsi" class="form-label">Isi Berita:</label>
+            <textarea id="editIsi" name="isi" class="form-control" rows="5" required></textarea>
+        </div>
 
-                <label for="judul">Judul:</label>
-                <input type="text" id="judul" name="judul" value="{{ old('judul', $berita->judul) }}" required>
+        <!-- Gambar -->
+        <div class="mb-3">
+            <label for="editGambar" class="form-label">Gambar:</label>
+            <input type="file" id="editGambar" name="gambar" class="form-control" accept="image/*">
+        </div>
 
-                <label for="isi">Isi Berita:</label>
-                <textarea id="isi" name="isi" rows="5" required>{{ old('isi', $berita->isi) }}</textarea>
-
-                <label for="gambar">Gambar:</label>
-                <input type="file" id="gambar" name="gambar" accept="image/*">
-
-                <button type="submit" class="btn">Perbarui Berita</button>
-            </form>
-        </section>
-    </main>
-</body>
-</html>
+        <!-- Tombol Submit -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+</div>

@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Berita</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Pastikan Bootstrap versi terbaru jika memungkinkan -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 
 <body>
     <div class="container mt-4">
         <h2>Daftar Berita</h2>
-      <li><a href="#" onclick="showModal('create-berita')">Tambah Berita</a></li>
+        <a href="#" class="btn btn-primary" onclick="showModal('create-berita')">Tambah Berita</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -23,17 +24,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($allBerita as $berita)
+                @foreach ($allBerita as $berita)
                     <tr>
                         <td>{{ $berita->id }}</td>
                         <td>{{ $berita->judul }}</td>
                         <td>{{ Str::limit($berita->isi, 50) }}</td>
                         <td>
-                            <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('berita.destroy', $berita->id) }}" method="POST" style="display:inline;">
+                            <button class="btn btn-warning"
+                                onclick="openEditModal({{ $berita->id }})">Edit</button>
+                            <form action="{{ route('berita.destroy', $berita->id) }}" method="POST"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="confirmDeletion(event)">Hapus</button>
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="confirmDeletion(event)">Hapus</button>
                             </form>
                         </td>
                     </tr>
@@ -42,13 +46,37 @@
         </table>
     </div>
 
+   <!-- Modal Edit Berita -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @include('partials.edit-berita')
+        </div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Fungsi untuk membuka modal edit berita
+        function openEditModal(id) {
+            $.get('/admin/berita/' + id + '/edit', function(data) {
+                // Mengatur form action URL untuk update
+                $('#editForm').attr('action', '/admin/berita/' + id);
+
+                // Isi form dengan data yang didapatkan
+                $('#editJudul').val(data.judul);
+                $('#editIsi').val(data.isi);
+
+                // Tampilkan modal
+                $('#editModal').modal('show');
+            });
+        }
+
+        // Konfirmasi penghapusan berita
         function confirmDeletion(event) {
-            event.preventDefault();
-            const form = event.target.closest('form');
-            const confirmation = confirm('Apakah Anda yakin ingin menghapus item ini?');
-            if (confirmation) {
-                form.submit();
+            if (!confirm('Apakah Anda yakin ingin menghapus berita ini?')) {
+                event.preventDefault(); // Batalkan penghapusan jika tidak yakin
             }
         }
     </script>
