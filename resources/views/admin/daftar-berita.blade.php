@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $berita->id }}</td>
                         <td>{{ $berita->judul }}</td>
-                        <td>{{ Str::limit($berita->isi, 50) }}</td>
+                        <td>{{ Str::limit($berita->isi, 255) }}</td>
                         <td>
                             {{-- tombol edit --}}
                             <button class="btn btn-warning" onclick="openEditModal({{ $berita->id }})">Edit</button>
