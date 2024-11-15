@@ -113,9 +113,11 @@
 
         // Fungsi untuk menampilkan modal (termasuk untuk edit)
         function showModal(modalId) {
+            console.log("Modal ID:", modalId); // Tambahkan log untuk debug
             const modal = new bootstrap.Modal(document.getElementById(modalId));
             modal.show();
         }
+
 
         // Fungsi untuk mengubah mode gelap/terang
         function toggleDarkMode() {

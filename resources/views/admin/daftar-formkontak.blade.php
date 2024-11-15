@@ -55,7 +55,7 @@
     <div class="modal fade" id="editModalKontak" tabindex="-1" aria-labelledby="editKontakLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                @include('partials.edit-formkontak') <!-- Menyertakan form edit -->
+                @include('partials.edit-formkontak')
             </div>
         </div>
     </div>
