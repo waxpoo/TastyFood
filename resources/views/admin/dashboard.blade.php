@@ -19,23 +19,25 @@
                 <li><a href="#" onclick="showModal('create-galeri')">Tambah Galeri</a></li>
                 <li><a href="#" onclick="showModal('edit-kontak')">Edit KontakInfo</a></li>
                 <li><a href="#" onclick="showModal('edit-tentang')">Edit Tentang Kami</a></li>
-                <li><a href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                </li>
-                <!-- Dark Mode Toggle -->
                 <li><a href="#" onclick="toggleDarkMode()">🌓 Dark Mode</a></li>
             </ul>
+            <!-- Tombol logout di bawah -->
+            <div class="logout-container">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            </div>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         </nav>
+
 
         <div class="main-content">
             <header>
                 <div class="header-content">
                     <h1>Dashboard Admin</h1>
                     <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-                    <a href="{{ route('home') }}" class="btn btn-primary">Kembali ke Halaman Utama</a>
+                    <a href="{{ route('home') }}" class="btn btn-primary">Lihat halaman utama</a>
                 </div>
             </header>
 
@@ -117,8 +119,33 @@
 
         // Fungsi untuk mengubah mode gelap/terang
         function toggleDarkMode() {
-            document.body.classList.toggle('light-mode');
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+
+            // Toggle class dark mode dan light mode
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            // Simpan preferensi tema ke localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Cek preferensi tema yang disimpan di localStorage saat halaman dimuat
+        window.onload = function() {
+            const theme = localStorage.getItem('theme');
+            const body = document.body;
+
+            // Jika preferensi dark mode ada di localStorage, terapkan tema tersebut
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                body.classList.remove('light-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            }
         }
     </script>
 </body>

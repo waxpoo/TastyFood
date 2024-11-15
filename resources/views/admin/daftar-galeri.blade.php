@@ -17,6 +17,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Gambar</th> <!-- Kolom untuk menampilkan gambar -->
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -24,6 +25,10 @@
                 @foreach($allGaleri as $galeri)
                     <tr>
                         <td>{{ $galeri->id }}</td>
+                        <td>
+                            <!-- Menampilkan gambar galeri dengan ukuran yang sama -->
+                            <img src="{{ asset('storage/galeri/' . $galeri->gambar) }}" alt="Gambar Galeri" style="width: 80px; height: 80px; object-fit: cover;">
+                        </td>
                         <td>
                             <!-- Tombol untuk membuka modal edit gambar galeri -->
                             <form action="{{ route('galeri.destroy', $galeri->id) }}" method="POST" style="display:inline;">
@@ -37,6 +42,7 @@
             </tbody>
         </table>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

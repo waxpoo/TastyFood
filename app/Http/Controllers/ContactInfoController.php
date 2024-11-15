@@ -60,6 +60,33 @@ class ContactInfoController extends Controller
     }
 
     // FORM KONTOL
+    public function storeFormKontak(Request $request)
+    {
+        // Validasi data yang diterima dari formulir kontak
+        $request->validate([
+            'subject' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'message' => 'required|string',
+        ]);
+
+        // Membuat instance model FormKontak untuk menyimpan data
+        $formKontak = new FormKontak();
+        $formKontak->subject = $request->subject;
+        $formKontak->name = $request->name;
+        $formKontak->email = $request->email;
+        $formKontak->message = $request->message;
+
+        // Simpan data formulir kontak
+        $formKontak->save();
+
+        // Simpan log untuk referensi
+        Log::info('Form Kontak Dikirim: ', $request->all());
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->route('kontak.show')->with('success');
+    }
+
     public function editFormKontak($id)
     {
         // Ambil data form kontak berdasarkan ID
