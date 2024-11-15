@@ -3,6 +3,19 @@ body, h1, h2, h3, p {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif; /* Font elegan */
+    transition: background-color 0.3s, color 0.3s; /* Transisi halus antara mode */
+}
+
+/* Mode terang */
+body.light-mode {
+    background-color: #f9f9f9; /* Latar belakang terang */
+    color: #000000; /* Teks gelap untuk kontras tinggi */
+}
+
+/* Mode gelap dengan ungu */
+body.dark-mode {
+    background-color: #1a1a1a; /* Latar belakang gelap dengan sentuhan ungu */
+    color: #ecf0f1; /* Teks terang untuk mode gelap */
 }
 
 /* Wrapper for the sidebar and main content */
@@ -14,14 +27,14 @@ body, h1, h2, h3, p {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background: #000; /* Hitam */
-    color: #ecf0f1; /* Teks putih */
+    background: #3a004b; /* Latar belakang sidebar dengan nuansa ungu gelap */
+    color: #ecf0f1; /* Teks terang */
     padding: 20px;
     position: fixed;
     top: 0;
     left: -250px; /* Mulai di luar layar */
     transition: left 0.3s ease; /* Transisi yang halus */
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Tambahkan bayangan untuk efek kedalaman */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
 }
 
 .sidebar.active {
@@ -53,7 +66,7 @@ body, h1, h2, h3, p {
 }
 
 .sidebar ul li a:hover {
-    background: #e67e22; /* Oranye gelap saat hover */
+    background: #9b59b6; /* Ungu terang saat hover */
 }
 
 /* Main content styles */
@@ -70,11 +83,11 @@ body, h1, h2, h3, p {
 
 /* Header styles */
 header {
-    background: #34495e; /* Warna gelap untuk header */
-    color: #ecf0f1;
+    background: #3a004b; /* Header ungu terang untuk mode gelap */
+    color: #ecf0f1; /* Teks terang untuk mode gelap */
     padding: 10px 20px;
-    border-bottom: 1px solid #2c3e50;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek kedalaman */
+    border-bottom: 1px solid #bdc3c7; /* Garis pembatas terang */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
 }
 
 header h1 {
@@ -83,7 +96,7 @@ header h1 {
 
 /* Toggle button styles */
 .toggle-btn {
-    background: #e67e22; /* Oranye gelap untuk tombol */
+    background: #8e44ad; /* Ungu gelap untuk tombol */
     border: none;
     color: #fff;
     font-size: 24px;
@@ -94,7 +107,7 @@ header h1 {
 }
 
 .toggle-btn:hover {
-    background: #d35400; /* Warna saat hover */
+    background: #9b59b6; /* Ungu terang saat hover */
 }
 
 /* Dashboard cards styles */
@@ -105,8 +118,8 @@ header h1 {
 }
 
 .card {
-    background: #2c3e50; /* Warna gelap untuk kartu */
-    color: #ecf0f1;
+    background: #3a004b; /* Kartu dengan latar belakang ungu gelap */
+    color: #ecf0f1; /* Teks terang untuk kartu */
     padding: 20px;
     border-radius: 5px; /* Sudut melengkung untuk kartu */
     flex: 1; /* Kartu akan mengisi ruang yang tersedia */
@@ -130,19 +143,14 @@ table {
 td {
     vertical-align: middle; /* Menyelaraskan konten di tengah */
     padding: 10px; /* Tambahkan padding untuk sel */
-    border: 1px solid #bdc3c7; /* Garis batas sel */
+    border: 1px solid #9b59b6; /* Garis batas sel berwarna ungu terang */
 }
 
 /* Ensure consistent padding for buttons */
 .btn {
     padding: 8px 12px; /* Padding seragam untuk tombol */
-    background: #e67e22; /* Warna tombol */
     color: #fff; /* Teks tombol putih */
     border: none; /* Menghilangkan batas */
     border-radius: 5px; /* Sudut melengkung untuk tombol */
     transition: background 0.3s; /* Efek transisi */
-}
-
-.btn:hover {
-    background: #d35400; /* Warna tombol saat hover */
 }

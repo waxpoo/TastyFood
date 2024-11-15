@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 
-<body>
+<body class="light-mode"> <!-- Default to light mode -->
     <div class="wrapper">
         <!-- Sidebar -->
         <nav class="sidebar">
@@ -22,6 +22,8 @@
                 <li><a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 </li>
+                <!-- Dark Mode Toggle -->
+                <li><a href="#" onclick="toggleDarkMode()">🌓 Dark Mode</a></li>
             </ul>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -55,7 +57,6 @@
                         </div>
                     </div>
                 </section>
-
 
                 @include('admin.daftar-berita')
                 @include('admin.daftar-galeri')
@@ -112,6 +113,12 @@
         function showModal(modalId) {
             const modal = new bootstrap.Modal(document.getElementById(modalId));
             modal.show();
+        }
+
+        // Fungsi untuk mengubah mode gelap/terang
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            document.body.classList.toggle('dark-mode');
         }
     </script>
 </body>
