@@ -34,8 +34,7 @@
                         <td>{{ Str::limit($FormKontak->message, 255) }}</td>
                         <td>
                             <!-- Tombol Edit -->
-                            <button class="btn btn-warning"
-                            onclick="openEditModal({{ $FormKontak->id }})">Edit</button>
+                            <button class="btn btn-warning"onclick="openEditModal({{ $FormKontak->id }})">Edit</button>
 
                             <!-- Form Hapus -->
                             <form action="{{ route('formkontak.destroy', $FormKontak->id) }}" method="POST"
@@ -74,8 +73,8 @@
                 $('#editEmail').val(data.email);
                 $('#editMessage').val(data.message);
 
-              // Tampilkan modal
-              $('#editModalKontak').modal('show');
+                // Tampilkan modal
+                $('#editModalKontak').modal('show');
             });
         }
 

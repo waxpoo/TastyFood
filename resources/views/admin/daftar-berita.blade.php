@@ -30,7 +30,9 @@
                         <td>{{ $berita->judul }}</td>
                         <td>{{ Str::limit($berita->isi, 50) }}</td>
                         <td>
+                            {{-- tombol edit --}}
                             <button class="btn btn-warning" onclick="openEditModal({{ $berita->id }})">Edit</button>
+                            {{-- tombol delete --}}
                             <form action="{{ route('berita.destroy', $berita->id) }}" method="POST"
                                 style="display:inline;">
                                 @csrf
