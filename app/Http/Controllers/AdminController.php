@@ -141,7 +141,7 @@ class AdminController extends Controller
     }
 
 
-    // AdminController.php
+    // daftar daftaran
     public function daftarBerita()
     {
         // Ambil semua data berita
