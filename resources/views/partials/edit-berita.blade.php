@@ -4,7 +4,7 @@
 </div>
 
 <div class="modal-body">
-    <form id="editForm" method="POST" enctype="multipart/form-data">
+    <form id="editFormBerita" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') <!-- Menentukan method PUT -->
 

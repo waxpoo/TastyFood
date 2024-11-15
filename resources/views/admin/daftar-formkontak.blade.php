@@ -34,7 +34,8 @@
                         <td>{{ Str::limit($FormKontak->message, 255) }}</td>
                         <td>
                             <!-- Tombol Edit -->
-                            <button class="btn btn-warning" onclick="openEditModal({{ $FormKontak->id }})">Edit</button>
+                            <button class="btn btn-warning"
+                            onclick="openEditModal({{ $FormKontak->id }})">Edit</button>
 
                             <!-- Form Hapus -->
                             <form action="{{ route('formkontak.destroy', $FormKontak->id) }}" method="POST"
@@ -52,7 +53,7 @@
     </div>
 
     <!-- Modal Edit Kontak -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editKontakLabel" aria-hidden="true">
+    <div class="modal fade" id="editModalKontak" tabindex="-1" aria-labelledby="editKontakLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 @include('partials.edit-formkontak') <!-- Menyertakan form edit -->
@@ -64,20 +65,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function openEditModal(id) {
-            $.get('/formkontak/' + id + '/edit', function(data) {
+            $.get('/admin/formkontak/' + id + '/edit', function(data) {
+                $('#editFormKontak').attr('action', '/admin/formkontak/' + id);
+
                 // Isi form dengan data yang diperoleh
                 $('#editSubject').val(data.subject);
                 $('#editName').val(data.name);
                 $('#editEmail').val(data.email);
                 $('#editMessage').val(data.message);
 
-                // Tampilkan modal
-                $('#editModal').modal('show');
-            }).fail(function(xhr, status, error) {
-                alert('Gagal memuat data form kontak: ' + xhr.responseText);
+              // Tampilkan modal
+              $('#editModalKontak').modal('show');
             });
         }
-
 
         // Konfirmasi penghapusan kontak
         function confirmDeletion(event) {

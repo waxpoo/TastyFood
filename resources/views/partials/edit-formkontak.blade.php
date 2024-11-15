@@ -3,27 +3,30 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 
-<div class="body-modal">
-    <form id="editForm" action="{{ route('formkontak.update', ['id' => $FormKontak->id]) }}" method="POST" enctype="multipart/form-data">
+<div class="modal-body">
+    <form id="editFormKontak" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        @method('PUT') <!-- Menentukan method PUT -->
 
         <!-- Subject -->
         <div class="mb-3">
             <label for="editSubject" class="form-label">Subject:</label>
-            <input type="text" id="editSubject" name="subject" class="form-control" value="{{ $FormKontak->subject }}" required>
+            <input type="text" id="editSubject" name="subject" class="form-control"
+                value="{{ $FormKontak->subject }}" required>
         </div>
 
         <!-- Name -->
         <div class="mb-3">
             <label for="editName" class="form-label">Name:</label>
-            <input type="text" id="editName" name="name" class="form-control" value="{{ $FormKontak->name }}" required>
+            <input type="text" id="editName" name="name" class="form-control" value="{{ $FormKontak->name }}"
+                required>
         </div>
 
         <!-- Email -->
         <div class="mb-3">
             <label for="editEmail" class="form-label">Email:</label>
-            <input type="email" id="editEmail" name="email" class="form-control" value="{{ $FormKontak->email }}" required>
+            <input type="email" id="editEmail" name="email" class="form-control" value="{{ $FormKontak->email }}"
+                required>
         </div>
 
         <!-- Message -->

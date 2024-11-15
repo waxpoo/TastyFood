@@ -30,8 +30,7 @@
                         <td>{{ $berita->judul }}</td>
                         <td>{{ Str::limit($berita->isi, 50) }}</td>
                         <td>
-                            <button class="btn btn-warning"
-                                onclick="openEditModal({{ $berita->id }})">Edit</button>
+                            <button class="btn btn-warning" onclick="openEditModal({{ $berita->id }})">Edit</button>
                             <form action="{{ route('berita.destroy', $berita->id) }}" method="POST"
                                 style="display:inline;">
                                 @csrf
@@ -46,14 +45,14 @@
         </table>
     </div>
 
-   <!-- Modal Edit Berita -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            @include('partials.edit-berita')
+    <!-- Modal Edit Berita -->
+    <div class="modal fade" id="editModalBerita" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @include('partials.edit-berita')
+            </div>
         </div>
     </div>
-</div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -61,15 +60,14 @@
         // Fungsi untuk membuka modal edit berita
         function openEditModal(id) {
             $.get('/admin/berita/' + id + '/edit', function(data) {
-                // Mengatur form action URL untuk update
-                $('#editForm').attr('action', '/admin/berita/' + id);
+                $('#editFormBerita').attr('action', '/admin/berita/' + id);
 
                 // Isi form dengan data yang didapatkan
                 $('#editJudul').val(data.judul);
                 $('#editIsi').val(data.isi);
 
                 // Tampilkan modal
-                $('#editModal').modal('show');
+                $('#editModalBerita').modal('show');
             });
         }
 
