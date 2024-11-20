@@ -89,10 +89,10 @@ class ContactInfoController extends Controller
 
     public function editFormKontak($id)
     {
-        // Ambil data form kontak berdasarkan ID
-        $formKontak = FormKontak::findOrFail($id); // Ganti FormKontak jadi formKontak
 
-        // Jika data tidak ditemukan, redirect dengan pesan error
+        $formKontak = formKontak::findOrFail($id); // Ganti FormKontak jadi formKontak
+
+
         return response()->json($formKontak); // Ganti FormKontak jadi formKontak
     }
 

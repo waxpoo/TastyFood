@@ -67,6 +67,7 @@
                 // Isi form dengan data yang didapatkan
                 $('#editJudul').val(data.judul);
                 $('#editIsi').val(data.isi);
+                $('#editgambar').val(data.gambar);
 
                 // Tampilkan modal
                 $('#editModalBerita').modal('show');

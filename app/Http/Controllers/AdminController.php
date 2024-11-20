@@ -73,8 +73,13 @@ class AdminController extends Controller
 
     public function editBerita($id)
     {
-        return response()->json(Berita::findOrFail($id));
+        // Mencari berita berdasarkan ID
+        $berita = Berita::findOrFail($id);
+
+        // Mengembalikan data berita dalam format JSON untuk AJAX
+        return response()->json($berita);
     }
+
 
     public function updateBerita(Request $request, $id)
     {
