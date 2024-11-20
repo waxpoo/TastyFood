@@ -52,7 +52,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/galeri/{id}/edit', [AdminController::class, 'editGaleri'])->name('galeri.edit');
     Route::put('/galeri/{id}', [AdminController::class, 'updateGaleri'])->name('galeri.update');
     Route::delete('/galeri/{galeri}', [AdminController::class, 'destroyGaleri'])->name('galeri.destroy');
-    
+
     // Rute untuk Tentang Kami
     Route::get('/admin/edit-tentang', [AdminController::class, 'editTentangKami'])->name('tentang.edit');
     Route::put('/tentang/update', [AdminController::class, 'updateTentangKami'])->name('tentang.update');

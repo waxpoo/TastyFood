@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="css/register.css">
-    
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="container">

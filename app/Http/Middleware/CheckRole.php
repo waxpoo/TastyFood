@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -18,7 +17,7 @@ class CheckRole
     public function handle($request, Closure $next, $role)
     {
         // Periksa apakah pengguna sudah login dan perannya sesuai
-        if (!Auth::check() || Auth::user()->role !== $role) {
+        if (!Auth::check() || Auth::user()->role !== (int) $role) {
             // Redirect ke halaman yang sesuai jika peran tidak cocok
             return redirect()->route('home')->withErrors(['role' => 'You do not have the required permissions.']);
         }
