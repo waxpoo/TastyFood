@@ -9,7 +9,6 @@ use App\Models\Tentang;
 use App\Models\ContactInfo;
 use App\Models\FormKontak;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
