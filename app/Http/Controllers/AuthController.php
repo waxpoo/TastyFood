@@ -9,17 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    /**
-     * Menampilkan form registrasi
-     */
     public function showRegisterForm()
     {
         return view('register'); // Mengarahkan ke view registrasi
     }
 
-    /**
-     * Menangani proses registrasi
-     */
     public function register(Request $request)
     {
         // Validasi input
@@ -48,20 +42,14 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirect setelah registrasi berhasil
-        return redirect()->route('home'); // Ganti dengan route yang sesuai
+        return redirect()->route('login'); // Ganti dengan route yang sesuai
     }
 
-    /**
-     * Menampilkan form login
-     */
     public function showLoginForm()
     {
-        return view('login'); // Mengarahkan ke view login
+        return view('login'); // Pastikan Anda memiliki view login.blade.php
     }
 
-    /**
-     * Menangani proses login
-     */
     public function login(Request $request)
     {
         // Validasi input login
@@ -72,7 +60,15 @@ class AuthController extends Controller
 
         // Jika kredensial cocok, login pengguna
         if (Auth::attempt($credentials)) {
-            // Mengalihkan pengguna setelah login berhasil
+            // Mengambil user yang sedang login
+            $user = Auth::user();
+
+            // Jika role pengguna adalah admin, arahkan ke halaman dashboard admin
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard'); // Pastikan Anda memiliki route ini
+            }
+
+            // Jika bukan admin, arahkan ke halaman utama (home)
             return redirect()->route('home'); // Ganti dengan route yang sesuai
         }
 
@@ -82,9 +78,6 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Menangani proses logout
-     */
     public function logout()
     {
         Auth::logout(); // Logout pengguna
