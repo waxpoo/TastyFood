@@ -15,7 +15,7 @@
         <div class="logo">TASTY FOOD</div>
         <nav>
             <ul>
-                <li><a href="http://127.0.0.1:8000/">HOME</a></li>
+                <li><a href="/">HOME</a></li>
                 <li><a href="tentang-kami">TENTANG</a></li>
                 <li><a href="berita-kami">BERITA</a></li>
                 <li><a href="galeri-kami">GALERI</a></li>

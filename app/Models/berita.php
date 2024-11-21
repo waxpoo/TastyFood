@@ -10,7 +10,7 @@ class Berita extends Model
     use HasFactory;
 
     // Tentukan nama tabel secara eksplisit jika diperlukan
-    protected $table = 'Berita';
+    protected $table = 'berita';
 
     // Tentukan kolom yang dapat diisi
     protected $fillable = ['judul', 'isi', 'gambar'];
