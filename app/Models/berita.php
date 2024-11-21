@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class berita extends Model
+class Berita extends Model
 {
     use HasFactory;
 
-    protected $table = 'Berita'; // Tentukan nama tabel secara eksplisit
+    // Tentukan nama tabel secara eksplisit jika diperlukan
+    protected $table = 'Berita';
 
-  // app/Models/Berita.php
-protected $fillable = ['judul', 'isi', 'gambar'];
-
+    // Tentukan kolom yang dapat diisi
+    protected $fillable = ['judul', 'isi', 'gambar'];
 }

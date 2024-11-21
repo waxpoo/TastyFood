@@ -111,9 +111,8 @@
             sidebar.classList.toggle('active');
         }
 
-        // Fungsi untuk menampilkan modal (termasuk untuk edit)
         function showModal(modalId) {
-            console.log("Modal ID:", modalId); // Tambahkan log untuk debug
+            console.log("Modal ID:", modalId); // Debug log
             const modal = new bootstrap.Modal(document.getElementById(modalId));
             modal.show();
         }
