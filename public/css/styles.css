@@ -1,128 +1,48 @@
+body,
 html {
-    zoom: 120%;
-    /* Mengatur zoom ke 100% untuk memastikan styling responsif */
-}
-
-body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #e9e9e9;
-    display: flex;
-    justify-content: center;
-    /* Menjaga konten tetap di tengah secara horizontal */
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden; /* Sembunyikan overflow horizontal (samping kanan) */
-    overflow-y: auto;   /* Tetap biarkan scroll vertikal */
-    position: relative; /* Supaya elemen absolut di dalamnya menggunakan body sebagai referensi */
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+
 }
 
 .container {
     max-width: 1250px;
+    margin-left: 25px;
     padding: 40px;
-    margin: 0 auto;
-    /* Mengatur margin otomatis agar konten terpusat */
-}
-
-.container-hero {
-    max-width: 1250px;
-    padding: 40px;
-    margin: 0 auto;
-    background-color: #e9e9e9;
-
-}
-
-.container-berita {
-    max-width: 1250px; /* Maximum width for content */
-    padding: 40px; /* Padding for content */
-    margin: 0 auto; /* Center the container */
-    background-color: #e9e9e9; /* Background color */
-    min-height: 100vh; /* Make the container at least 100% of the viewport height */
-    position: relative; /* Establish a positioning context */
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-
-.container-tentang {
-    background-color: #ffffff;
 }
 
 header {
     display: flex;
-    justify-content: flex-start;
-    /* Mengatur header untuk mulai dari kiri */
-    padding: 20px 0;
-    /* Tambahkan padding vertikal */
-    width: 100%;
-    /* Memastikan header menggunakan lebar penuh */
-    background-color: #e9e9e9;
-    /* Opsional: tambahkan warna latar belakang untuk header */
-}
-
-.container-header {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    max-width: 1250px;
-    /* Menjaga lebar maksimum konten */
-    width: 100%;
-    /* Memastikan container menggunakan lebar penuh */
-    padding: 0 20px;
-    /* Tambahkan padding horizontal */
-    box-sizing: border-box;
-    /* Menghindari overflow */
-    margin: 10px 0;
-    /* Mengatur margin atas dan bawah untuk menurunkan konten sedikit */
+    padding: 40px 0;
+    margin-left: 5px;
+    margin-right: 510px;
 }
 
 .logo {
     font-weight: bold;
     font-size: 30px;
-    /* Ukuran font yang dapat diatur */
-    margin-right: 20px;
-    /* Jarak antara logo dan menu navigasi */
-    margin-bottom: 5px;
-    /* Menurunkan logo sedikit dengan margin bawah */
 }
 
 nav {
     display: flex;
-    align-items: center;
-    /* Menjaga item navigasi sejajar dengan logo */
-    gap: 15px;
-    /* Jarak antara item navigasi */
+    margin-left: 10px;
 }
 
 nav a {
+    margin-right: 24px;
     text-decoration: none;
     color: black;
     font-size: 14px;
-    /* Ukuran font item navigasi */
     text-transform: uppercase;
-    transition: color 0.3s ease;
-    /* Transisi warna untuk efek hover */
-}
 
-nav a:hover {
-    color: #ff6f61;
-    /* Warna saat hover */
-}
 
-.btn {
-    display: inline-block;
-    background-color: black;
-    padding: 10px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 5px;
-    /* Sudut tombol */
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: grey;
-    /* Warna saat hover */
 }
 
 .content {
@@ -131,26 +51,28 @@ nav a:hover {
     align-items: center;
     padding: 50px 0;
     position: relative;
-    width: 100%;
-    max-width: 1250px;
-    /* Menjaga lebar maksimum konten */
 }
 
 .text-content {
-    width: 50%;
+    max-width: 55%;
+    position: relative;
+    margin-right: 300px;
 }
 
 .line {
-    width: 10px;
+    width: 20px;
     height: 2px;
     background-color: black;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: -5px;
+    left: 5px;
 }
 
-h1 {
-    font-size: 48px;
-    margin-left: 40px;
-    line-height: 1.4;
+.text-content h1 {
+    margin-top: 20px;
+    margin-right: 20px;
+    position: relative;
 }
 
 p {
@@ -167,23 +89,17 @@ p {
 }
 
 .image-content {
-    width: 60%;
+    width: 67%;
     position: absolute;
-    right: -250px;
-    top: -370px;
+    right: -470px;
+    top: -350px;
     overflow: hidden;
-
-    /* Menghilangkan bagian gambar yang melampaui kontainer */
 }
 
 .image-content img {
     width: 100%;
-    height: 100%;
-    /* Memastikan gambar mengisi kontainer sepenuhnya */
-    object-fit: cover;
-    /* Memastikan gambar dipotong sesuai ukuran kontainer tanpa mengubah rasio aspek */
+    border-radius: 50%;
 }
-
 
 .tentang-kami-content {
     text-align: center;
@@ -206,13 +122,11 @@ p {
     background-image: url('/asd.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    padding: 140px 0;
+    padding: 140px 0px;
     display: flex;
     justify-content: center;
+
     flex-direction: column;
-    min-height: 300px;
-    /* Tambahkan tinggi minimum jika perlu */
 }
 
 .food-sections {
@@ -221,9 +135,6 @@ p {
     align-items: flex-start;
     gap: 10px;
     flex-wrap: wrap;
-    width: 100%;
-    max-width: 1250px;
-    /* Menjaga lebar maksimum food sections */
 }
 
 .food-item {
@@ -234,8 +145,6 @@ p {
     padding: 20px;
     width: 250px;
     position: relative;
-    margin: 10px;
-    /* Menambahkan margin untuk spasi */
 }
 
 .food-item img {
@@ -280,16 +189,16 @@ button:hover {
 }
 
 #berita-kami {
-    padding: 20px;
+    padding: 70px;
     max-width: 1200px;
     margin: 0 auto;
-    /* Mengatur margin otomatis agar berita-kami terpusat */
 }
 
 #berita-kami h2 {
     text-align: center;
     font-size: 2em;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
+    font-weight: bold;
 }
 
 .berita-container {
@@ -298,11 +207,6 @@ button:hover {
         "large large small1 small2"
         "large large small3 small4";
     grid-gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    /* Menjaga lebar maksimum berita-container */
-    margin: 0 auto;
-    /* Mengatur margin otomatis agar berita-container terpusat */
 }
 
 .berita-card {
@@ -365,7 +269,7 @@ button:hover {
 }
 
 .berita-card-content a {
-    color: #f6ff00;
+    color: #ffc62b;
     text-decoration: none;
     font-weight: bold;
 }
@@ -376,18 +280,15 @@ button:hover {
 
 #gallery-kami {
     background-color: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    text-align: center;
-    /* Menambahkan ini untuk menengahkan konten */
+    padding: 15px;
+    margin: 0px 0;
+    border-radius: 10px;
 }
 
 .gallery-container {
     width: 80%;
     max-width: 1200px;
-    margin: 0 auto;
-    /* Mengatur margin otomatis agar gallery-container terpusat */
+    margin: 50px auto;
     text-align: center;
 }
 
@@ -401,8 +302,6 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 5px;
-    justify-content: center;
-    /* Menambahkan ini untuk menengahkan grid di dalam container */
 }
 
 .gallery-item {
@@ -424,8 +323,6 @@ button:hover {
 
 .gallery-button {
     margin-top: 20px;
-    text-align: center;
-    /* Menambahkan ini untuk menengahkan tombol di bawah grid */
 }
 
 .gallery-button button {
@@ -442,7 +339,6 @@ button:hover {
     background-color: #444;
 }
 
-/* Footer styles */
 footer {
     background-color: #000000;
     color: white;
@@ -491,4 +387,61 @@ footer {
     text-align: center;
     padding-top: 1rem;
     border-top: 1px solid #555;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .image-content {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .text-content {
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .food-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .berita-container {
+        grid-template-areas:
+            "large"
+            "small1"
+            "small2"
+            "small3"
+            "small4";
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
 }
