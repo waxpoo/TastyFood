@@ -20,6 +20,7 @@
                     <th>ID</th>
                     <th>Judul</th>
                     <th>Isi</th>
+                    <th>Gambar</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -29,6 +30,14 @@
                         <td>{{ $berita->id }}</td>
                         <td>{{ $berita->judul }}</td>
                         <td>{{ Str::limit($berita->isi, 255) }}</td>
+                        <td>
+                            @if ($berita->gambar)
+                                <img src="{{ asset('storage/gambar/' . $berita->gambar) }}" alt="Gambar Berita"
+                                    class="img-fluid" style="max-width: 100px; max-height: 100px;">
+                            @else
+                                <span class="text-muted">Tidak ada gambar</span>
+                            @endif
+                        </td>
                         <td>
                             {{-- tombol edit --}}
                             <button class="btn btn-warning" onclick="openEditModal({{ $berita->id }})">Edit</button>
