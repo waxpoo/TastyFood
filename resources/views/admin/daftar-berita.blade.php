@@ -65,10 +65,27 @@
         </div>
     </div>
 
+    <!-- Modal Tambah Berita -->
+    <div id="create-berita" class="modal fade" tabindex="-1" aria-labelledby="createBeritaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @include('partials.create-berita')
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Fungsi untuk membuka modal edit berita
+        // Fungsi untuk membuka modal tambah atau edit berita
+        function showModal(modalId) {
+            const modalElement = document.getElementById(modalId);
+            const bootstrapModal = new bootstrap.Modal(modalElement);
+            bootstrapModal.show();
+        }
+
+        // Fungsi untuk membuka modal edit berita dengan data yang diambil dari server
         function openEditModal(id) {
             $.get('/admin/berita/' + id + '/edit', function(data) {
                 $('#editFormBerita').attr('action', '/admin/berita/' + id);
@@ -90,6 +107,7 @@
             }
         }
     </script>
+
 </body>
 
 </html>
