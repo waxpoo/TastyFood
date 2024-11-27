@@ -59,7 +59,7 @@ class ContactInfoController extends Controller
         return view('kontak-kami', compact('kontak'));
     }
 
-    // FORM KONTOL
+    // FORM kontak
     public function storeFormKontak(Request $request)
     {
         // Validasi data yang diterima dari formulir kontak

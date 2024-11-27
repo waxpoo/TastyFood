@@ -11,28 +11,25 @@
         <!-- Subject -->
         <div class="mb-3">
             <label for="editSubject" class="form-label">Subject:</label>
-            <input type="text" id="editSubject" name="subject" class="form-control"
-                value="{{ $FormKontak->subject }}" required>
+            <input type="text" id="editSubject" name="subject" class="form-control" value="" required>
         </div>
 
         <!-- Name -->
         <div class="mb-3">
             <label for="editName" class="form-label">Name:</label>
-            <input type="text" id="editName" name="name" class="form-control" value="{{ $FormKontak->name }}"
-                required>
+            <input type="text" id="editName" name="name" class="form-control" value="" required>
         </div>
 
         <!-- Email -->
         <div class="mb-3">
             <label for="editEmail" class="form-label">Email:</label>
-            <input type="email" id="editEmail" name="email" class="form-control" value="{{ $FormKontak->email }}"
-                required>
+            <input type="email" id="editEmail" name="email" class="form-control" value="" required>
         </div>
 
         <!-- Message -->
         <div class="mb-3">
             <label for="editMessage" class="form-label">Message:</label>
-            <textarea id="editMessage" name="message" class="form-control" rows="5" required>{{ $FormKontak->message }}</textarea>
+            <textarea id="editMessage" name="message" class="form-control" rows="5" required></textarea>
         </div>
 
         <!-- Tombol Submit -->

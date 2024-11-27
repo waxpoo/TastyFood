@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <!-- Modal Template -->
+    {{-- buat berita --}}
     <div class="modal fade" id="create-berita" tabindex="-1" aria-labelledby="createBeritaLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -76,6 +76,7 @@
         </div>
     </div>
 
+    {{-- buat galeri --}}
     <div class="modal fade" id="create-galeri" tabindex="-1" aria-labelledby="createGaleriLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -84,6 +85,7 @@
         </div>
     </div>
 
+    {{-- edit kontak --}}
     <div class="modal fade" id="edit-kontak" tabindex="-1" aria-labelledby="editKontakLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -94,6 +96,7 @@
         </div>
     </div>
 
+    {{-- edit tentang --}}
     <div class="modal fade" id="edit-tentang" tabindex="-1" aria-labelledby="editTentangLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,23 +105,78 @@
         </div>
     </div>
 
+    <!-- Modal Edit Berita -->
+    <div class="modal fade" id="editModalBerita" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @include('partials.edit-berita')
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Kontak -->
+    <div class="modal fade" id="editModalKontak" tabindex="-1" aria-labelledby="editKontakLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @include('partials.edit-formkontak')
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Fungsi sidebar
+        // Fungsi Sidebar
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.classList.toggle('active');
         }
 
+        // Fungsi Menampilkan Modal
         function showModal(modalId) {
-            console.log("Modal ID:", modalId); // Debug log
             const modal = new bootstrap.Modal(document.getElementById(modalId));
             modal.show();
         }
 
+        // Fungsi untuk Membuka Modal Edit Berita
+        function openEditModalBerita(id) {
+            $.get('/admin/berita/' + id + '/edit', function(data) {
+                $('#editFormBerita').attr('action', '/admin/berita/' + id);
 
-        // Fungsi untuk mengubah mode gelap/terang
+                // Isi form dengan data yang didapatkan
+                $('#editJudul').val(data.judul);
+                $('#editIsi').val(data.isi);
+                $('#editgambar').val(data.gambar);
+
+                // Tampilkan modal
+                $('#editModalBerita').modal('show');
+            });
+        }
+
+        // Fungsi untuk Membuka Modal Edit Form Kontak
+        function openEditModalFormKontak(id) {
+            $.get('/admin/formkontak/' + id + '/edit', function(data) {
+                $('#editFormKontak').attr('action', '/admin/formkontak/' + id);
+
+                // Isi form dengan data yang diperoleh
+                $('#editSubject').val(data.subject);
+                $('#editName').val(data.name);
+                $('#editEmail').val(data.email);
+                $('#editMessage').val(data.message);
+
+                // Tampilkan modal
+                $('#editModalKontak').modal('show');
+            });
+        }
+        
+        // Konfirmasi Penghapusan
+        function confirmDeletion(event) {
+            if (!confirm('Apakah Anda yakin ingin menghapus item ini?')) {
+                event.preventDefault(); // Membatalkan aksi jika tidak yakin
+            }
+        }
+
+        // Fungsi Dark Mode
         function toggleDarkMode() {
             const body = document.body;
 
@@ -126,7 +184,7 @@
             body.classList.toggle('dark-mode');
             body.classList.toggle('light-mode');
 
-            // Simpan preferensi tema ke localStorage
+            // Menyimpan preferensi tema ke localStorage
             if (body.classList.contains('dark-mode')) {
                 localStorage.setItem('theme', 'dark');
             } else {
@@ -134,12 +192,12 @@
             }
         }
 
-        // Cek preferensi tema yang disimpan di localStorage saat halaman dimuat
+        // Memuat Preferensi Tema saat Halaman Dimuat
         window.onload = function() {
             const theme = localStorage.getItem('theme');
             const body = document.body;
 
-            // Jika preferensi dark mode ada di localStorage, terapkan tema tersebut
+            // Jika preferensi dark mode ditemukan, menerapkannya
             if (theme === 'dark') {
                 body.classList.add('dark-mode');
                 body.classList.remove('light-mode');
@@ -148,7 +206,33 @@
                 body.classList.add('light-mode');
             }
         }
+
+        // Fungsi untuk Membuka Modal Create Berita
+        function openCreateBerita() {
+            const modal = new bootstrap.Modal(document.getElementById('create-berita'));
+            modal.show();
+        }
+
+        // Fungsi untuk Membuka Modal Create Galeri
+        function openCreateGaleri() {
+            const modal = new bootstrap.Modal(document.getElementById('create-galeri'));
+            modal.show();
+        }
+
+        // Fungsi Global untuk Memuat Data Modal Secara Dinamis
+        function loadModalContent(modalId, url) {
+            $.get(url, function(data) {
+                $(`#${modalId} .modal-body`).html(data);
+
+                // Menampilkan modal
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+            }).fail(function() {
+                alert('Gagal memuat konten modal. Silakan coba lagi.');
+            });
+        }
     </script>
+
 </body>
 
 </html>
