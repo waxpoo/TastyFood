@@ -127,7 +127,7 @@ class ContactInfoController extends Controller
         Log::info('Form Kontak Diperbarui: ', $request->all());
 
         // Redirect ke halaman dashboard admin dengan pesan sukses
-        return redirect()->route('admin.dashboard')->with('success', 'Form Kontak berhasil diperbarui.');
+        return redirect()->route('admin.daftar-formkontak')->with('success', 'Form Kontak berhasil diperbarui.');
     }
 
     public function destroyFormKontak($id)
@@ -137,7 +137,7 @@ class ContactInfoController extends Controller
 
         // Jika data tidak ditemukan, kembalikan dengan pesan error
         if (!$formKontak) {
-            return redirect()->route('admin.dashboard')->with('error', 'Form Kontak tidak ditemukan.');
+            return redirect()->route('admin.daftar-formkontak')->with('error', 'Form Kontak tidak ditemukan.');
         }
 
         // Hapus form kontak

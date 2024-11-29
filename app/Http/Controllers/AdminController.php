@@ -95,13 +95,13 @@ class AdminController extends Controller
         }
 
         $berita->update($validated);
-        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diperbarui.');
+        return redirect()->route('admin.daftar-berita')->with('success', 'Berita berhasil diperbarui.');
     }
 
     public function destroyBerita(Berita $berita)
     {
         $berita->delete();
-        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil dihapus.');
+        return redirect()->route('admin.daftar-berita')->with('success', 'Berita berhasil dihapus.');
     }
 
     // Fungsi Galeri
@@ -114,7 +114,7 @@ class AdminController extends Controller
         $validated['gambar'] = basename($request->file('gambar')->store('public/galeri'));
         Galeri::create($validated);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Gambar berhasil ditambahkan.');
+        return redirect()->route('admin.daftar-galeri')->with('success', 'Gambar berhasil ditambahkan.');
     }
 
     public function editGaleri($id)
@@ -135,13 +135,13 @@ class AdminController extends Controller
         }
 
         $galeriItem->update($validated);
-        return redirect()->route('admin.dashboard')->with('success', 'Gambar berhasil diperbarui.');
+        return redirect()->route('admin.daftar-galeri')->with('success', 'Gambar berhasil diperbarui.');
     }
 
     public function destroyGaleri(Galeri $galeri)
     {
         $galeri->delete();
-        return redirect()->route('admin.dashboard')->with('success', 'Gambar berhasil dihapus.');
+        return redirect()->route('admin.daftar-galeri')->with('success', 'Gambar berhasil dihapus.');
     }
 
 

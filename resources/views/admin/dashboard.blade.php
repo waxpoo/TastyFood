@@ -138,37 +138,8 @@
             modal.show();
         }
 
-        // Fungsi untuk Membuka Modal Edit Berita
-        function openEditModalBerita(id) {
-            $.get('/admin/berita/' + id + '/edit', function(data) {
-                $('#editFormBerita').attr('action', '/admin/berita/' + id);
+     
 
-                // Isi form dengan data yang didapatkan
-                $('#editJudul').val(data.judul);
-                $('#editIsi').val(data.isi);
-                $('#editgambar').val(data.gambar);
-
-                // Tampilkan modal
-                $('#editModalBerita').modal('show');
-            });
-        }
-
-        // Fungsi untuk Membuka Modal Edit Form Kontak
-        function openEditModalFormKontak(id) {
-            $.get('/admin/formkontak/' + id + '/edit', function(data) {
-                $('#editFormKontak').attr('action', '/admin/formkontak/' + id);
-
-                // Isi form dengan data yang diperoleh
-                $('#editSubject').val(data.subject);
-                $('#editName').val(data.name);
-                $('#editEmail').val(data.email);
-                $('#editMessage').val(data.message);
-
-                // Tampilkan modal
-                $('#editModalKontak').modal('show');
-            });
-        }
-        
         // Konfirmasi Penghapusan
         function confirmDeletion(event) {
             if (!confirm('Apakah Anda yakin ingin menghapus item ini?')) {
