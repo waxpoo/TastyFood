@@ -1,6 +1,6 @@
-Proyek Halaman Admin
+<p align center>GAMBAR HASIL DARI PROJEK TASTY FOOD</p>
 
-Fitur Utama:
+Fitur-fitur yang ada di projek:
 
 Antarmuka Pengguna: Desain dinamis dan intuitif yang mudah digunakan oleh siapa pun.
 
