@@ -1,8 +1,13 @@
-<p align center>GAMBAR HASIL DARI PROJEK TASTY FOOD</p>
+<p align="center"># 📋 Tasty Food Project
 
-Fitur-fitur yang ada di projek:
+Tasty Food adalah proyek yang dirancang untuk menciptakan pengalaman pengguna yang interaktif, intuitif, dan menyenangkan. Proyek ini dirancang dengan desain modern dan fitur yang memudahkan pengguna untuk mengakses informasi dengan cepat.
+</p>
 
-Antarmuka Pengguna: Desain dinamis dan intuitif yang mudah digunakan oleh siapa pun.
+## ✨ Fitur Utama
+
+### 1️⃣ **Antarmuka Pengguna yang Dinamis**
+Antarmuka dirancang dengan tampilan modern dan intuitif, sehingga dapat digunakan oleh siapa saja dengan mudah.  
+![Antarmuka Pengguna](https://github.com/user-attachments/assets/57a424f4-64d7-4390-9e4d-98f9eced5eee)
 
 ![Cuplikan layar 2025-01-21 100630](https://github.com/user-attachments/assets/27309a4e-f569-455a-a303-eb1710630f28)
 
